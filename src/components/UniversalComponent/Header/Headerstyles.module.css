@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Raleway:wght@600;800&display=swap');
+
+.headerWrapper {
+    display: grid;
+    grid-template-areas:
+    "pic ser bud out";
+    border: 10px solid blue;
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: 3fr 1fr 5fr 3fr;
+}
+
+.headerLogo {
+    border: 2px solid red;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    grid-area: pic;
+    display: flex;
+    margin-right: 85px;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerLogoContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin-right: 85px;
+    flex-wrap: wrap;
+}
+.headerLogoContainer1 {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-right: 85px;
+}
+
+.headerLogoImg {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 50px;
+    height: 50px;
+
+}
+.headerLogoImg img {
+    display: flex;
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.headerLogoBudContainer {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.headerLogoBud {
+    display: flex;
+    position: relative;
+    font-family: Raleway;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.headerLogoDy {
+    display: flex;
+    font-family: Italianno;
+    font-size: 50px;
+    color: red;
+    margin: 13px 0px -15px  5px ;
+}
+
+.headerBud {
+    /*border: 5px solid red;*/
+    display: flex;
+    grid-area: bud;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.headerBudContainer {
+    /*border: 2px solid red;*/
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 25%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.headerBudThemeControl {
+    display: flex;
+    margin-right: 120px;
+    width: 150px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ECECEC;
+}
+
+.headerBudLanguageControl {
+    display: flex;
+    width: 150px;
+    height: 50px;
+    margin-right: 80px;
+    border-radius: 12px;
+    background-color: #ECECEC;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerBudLanguageControlText {
+    font-size: 20px;
+    font-weight: bolder;
+    opacity: 0.3;
+    border: none;
+}
+
+.headerBudLanguageControlTextActive {
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+    opacity: 1;
+}
+
+.headerBudThemeControl {
+    display: flex;
+    width: 150px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ECECEC;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerBudThemeControlText {
+    justify-content: space-around;
+    width: 100%;
+    display: flex;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    opacity: 0.3;
+    transform: scale(0.6);
+}
+
+.headerBudThemeControlTextActive {
+    justify-content: space-around;
+    width: 100%;
+    display: flex;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    transform: scale(0.6);
+}
+
+.headerSearch {
+    grid-area: ser;
+    width: 225px;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+    margin-left: 85px;
+}
+.headerSearchContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+}
+
+.headerSearch input {
+    border: none;
+    border-radius: 12px;
+    background: #ECECEC;
+    height: 50px;
+    width: 97%;
+    font-size: 24px;
+    outline: none;
+}
+
+.headerSearchContainer span  {
+    position: absolute;
+    pointer-events: none;
+    font-size: 24px;
+    opacity: 0.3;
+    background: none;
+    margin-left: 20px;
+}
+
+.headerSearchContainer input:focus ~ span  {
+    display: none;
+}
+.headerSearchContainer input:focus ~ img  {
+    display: none;
+}
+
+.headerSearchContainer img {
+    pointer-events: none;
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin-left: -50px;
+    opacity: 0.3;
+}
+
+
+.headerLogOut {
+    border: 2px solid red;
+    /*flex-direction: column;*/
+    flex-wrap: wrap;
+    grid-area: out;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.headerLogOutText {
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-decoration: none;
+    width: 100%;
+    padding-left: 30%;
+
+}
+
+.headerLogOutTextProfile {
+    /*flex-direction: row;*/
+    /*width: 100%;*/
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    /*padding-left: 20%;*/
+}
+
+.headerLogOutText:visited {
+    color: black;
+}
+
+.headerLogOutTextProfile:visited {
+    color: black;
+}
+
+
+@media screen and (max-width: 1140px) {
+    .headerLogoBud {
+        font-size: 28px;
+    }
+    .headerLogoDy {
+        font-size: 42px;
+    }
+    .headerLogOut {
+        font-size: 14px;
+    }
+    }
+
+@media screen and (max-width: 850px) {
+    .headerSearch {
+        grid-area: ser;
+        width: 85px;
+        justify-content: start;
+        align-items: center;
+        display: flex;
+        /*margin-left: 85px;*/
+    }
+    .headerLogOut {
+        font-size: 10px;
+    }
+    }
+

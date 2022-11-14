@@ -1,11 +1,13 @@
-import React from 'react';
 import './App.css';
+import ProfileHOK from './components/Profile/ProfileHOK';
+import Header from './components/UniversalComponent/Header/Header';
 
 function App() {
   return (
-    <div className="App">
-     Hello, samurai! Let's go!
-    </div>
+    <main className="App">
+        <Header/>
+        <ProfileHOK/>
+    </main>
   );
 }
 
