@@ -6,7 +6,7 @@ import WhiteTheme from '../../../pics/sun-regular.svg'
 
 
 const ThemeControl = () => {
-    const [active, setActive] = useState<String>('')
+    const [active, setActive] = useState<String>('White')
     const clickWhite = () => setActive('White')
     const clickBlack = () => setActive('Black')
     const activeStyle = active === 'White' ? s.headerBudThemeControlTextActive : s.headerBudThemeControlText

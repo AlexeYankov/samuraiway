@@ -17,19 +17,17 @@ import Avatar from './Avatar';
 const ProfileHok = () => {
     return (
         <section>
-            <article>
-                <nav>
-                    <Messages/>
-                    <Shorts/>
-                    <Music/>
-                    <Video/>
-                    <Groups/>
-                    <Games/>
-                    <Settings/>
-                </nav>
-                <UniversalButton/>
-                <UniversalButton/>
-            </article>
+            <nav>
+                <Messages/>
+                <Shorts/>
+                <Music/>
+                <Video/>
+                <Groups/>
+                <Games/>
+                <Settings/>
+            </nav>
+            <UniversalButton/>
+            <UniversalButton/>
             <article>
                 <Avatar/>
                 <aside>subscribers</aside>

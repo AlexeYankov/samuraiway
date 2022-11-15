@@ -46,12 +46,12 @@ const Header = () => {
                 </div>
             </article>
 
-            {/*<article className={s.headerBud}>*/}
-            {/*    <div className={s.headerBudContainer}>*/}
-            {/*        <ThemeControl/>*/}
-            {/*        <LanguageControl/>*/}
-            {/*    </div>*/}
-            {/*</article>*/}
+            <article className={s.headerBud}>
+                <div className={s.headerBudContainer}>
+                    <ThemeControl/>
+                    <LanguageControl/>
+                </div>
+            </article>
 
             {guest ? (
                 <article className={s.headerLogOut}>
