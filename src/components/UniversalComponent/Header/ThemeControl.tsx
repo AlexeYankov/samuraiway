@@ -3,14 +3,23 @@ import s from './Headerstyles.module.css'
 import BlackTheme from '../../../pics/moon-solid.svg'
 import WhiteTheme from '../../../pics/sun-regular.svg'
 
+type ThemeColorType = {
+    color: (active: string) => void
+}
 
 
-const ThemeControl = () => {
+const ThemeControl = (p: ThemeColorType) => {
     const [active, setActive] = useState<String>('White')
-    const clickWhite = () => setActive('White')
-    const clickBlack = () => setActive('Black')
+    const clickWhite = () => {
+        setActive('White')
+        p.color('White')
+    }
+    const clickBlack = () => {
+        setActive('Black')
+        p.color('Black')
+    }
     const activeStyle = active === 'White' ? s.headerBudThemeControlTextActive : s.headerBudThemeControlText
-    const activeStyle1 = active === 'Black' ? s.headerBudThemeControlTextActive : s.headerBudThemeControlText
+    const activeStyle1 = active === 'Black' ? s.headerBudThemeControlTextActive  : s.headerBudThemeControlText
     return (
         <article className={s.headerBudThemeControl}>
             <label htmlFor="White" className={activeStyle}>

@@ -8,25 +8,34 @@ import search from '../../../pics/magnifying-glass-solid.svg'
 
 const Header = () => {
     const [guest, setGuest] = useState<Boolean>(false)
+    const [color, setColor] = useState<string>('White')
+
     const aCallBack = () => {
         console.log('a called')
     }
+    const colorCallBack = color === 'White' ? s.headerWrapper : s.headerWrapperBlack
+    const colorChecker = (color: string) => {
+        setColor(color)
+    }
+    const fontColor = color === 'White' ? {color: 'black'} : {color: 'white'}
+    const black = color === 'White' ? s.headerLogOut : s.headerLogOutBlack
+    // const black1 = color === 'White' ? s.headerBudContainer : s.headerBudContainerBlack
+
 
     return (
-        <nav className={s.headerWrapper}>
+        <nav className={colorCallBack}>
 
             <article className={s.headerLogo}>
                 <article className={s.headerLogoContainer}>
                     <label className={s.headerLogoContainer1} htmlFor="Foo">
                         <a className={s.headerLogoImg} id={'Foo'} onClick={aCallBack}>
-
                             <div className={s.headerLogoBudContainer}>
                                 <img src={logo} alt="buddy"/>
-                                <span id={'Foo'} className={s.headerLogoBud}>
+                                <span className={s.headerLogoBud} id={'Foo'}>
                                      bud
                                 </span>
 
-                                <span id={'Foo'} className={s.headerLogoDy}>
+                                <span className={s.headerLogoDy} id={'Foo'}>
                                         dy
                                 </span>
                             </div>
@@ -39,36 +48,37 @@ const Header = () => {
 
                 <div className={s.headerSearchContainer}>
                     <input type="text"/>
-                    <span>
+                    <span style={{color: 'gray'}}>
                          Search
                     </span>
                     <img src={search} alt="search"/>
                 </div>
             </article>
 
-            <article className={s.headerBud}>
+            <article className={s.headerBudBlack}>
                 <div className={s.headerBudContainer}>
-                    <ThemeControl/>
+                    <ThemeControl color={(color)=>colorChecker(color)}/>
                     <LanguageControl/>
                 </div>
             </article>
 
-            {guest ? (
-                <article className={s.headerLogOut}>
-                    <a className={s.headerLogOutText} href="">
-                        <p>log out</p>
-                    </a>
-                </article>
-            ) : (
-                <article className={s.headerLogOut}>
-                        <a className={s.headerLogOutTextProfile} href="">
+            {
+                guest ? (
+                    <article className={black}>
+                        <a className={s.headerLogOutText} href="">
+                            <p>log out</p>
+                        </a>
+                    </article>
+                ) : (
+                    <article className={black}>
+                        <a className={s.headerLogOutTextProfile} style={fontColor} href="">
                             <span>sign in</span>
                         </a>
-                        <a className={s.headerLogOutTextProfile} href="">
+                        <a className={s.headerLogOutTextProfile} style={fontColor} href="">
                             <span>create new account</span>
                         </a>
-                </article>
-            )
+                    </article>
+                )
             }
 
         </nav>

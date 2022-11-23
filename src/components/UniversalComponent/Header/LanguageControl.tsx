@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './Headerstyles.module.css'
 
 const LanguageControl = () => {
-    const [active, setActive] = useState<String>('')
+    const [active, setActive] = useState<String>('English')
     const clickChinese = () => setActive('Chinese')
     const clickRussian = () => setActive('Russian')
     const clickEnglish = () => setActive('English')

@@ -1,0 +1,98 @@
+.profileWrapper {
+    display: grid;
+    grid-template-areas:
+    "pic ser bud out";
+    /*"pic1 ser1 bud1 out1";*/
+    grid-template-rows: 335px 1fr;
+    grid-template-columns: 3fr 1fr 5fr 3fr;
+    background-color: white;
+}
+
+.profileBar{
+    flex-wrap: wrap;
+    grid-area: pic;
+    display: flex;
+    /*margin-right: 85px;*/
+    justify-content: flex-end;
+    align-items: flex-end;
+    /*border: 3px solid green;*/
+}
+
+.profileBar__buttons {
+    display: flex;
+    /*border: 2px solid blue;*/
+    width: 100%;
+    height: 100%;
+}
+
+.profileAvatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    grid-area: ser;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.profileInfo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    grid-area: bud;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.profileAside {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    grid-area: out;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.profileBar__container {
+    border-bottom: 1px solid #282c34;
+    border-top: 1px solid #282c34;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-around;
+    /*padding-right: -15%;*/
+}
+
+.profileBar__container img {
+    width: 32px;
+    height: 28px;
+    margin: 0px 10px -8px 0px;
+    /*padding-right: -15%;*/
+}
+
+/*.profileBar a:before {*/
+/*    !*display: block;*!*/
+/*    content: '';*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+
+/*    display: inline-block;*/
+/*    border: 2px solid red;*/
+/*    margin: 5px 5px -5px 0px;*/
+/*    !*nargin-right: 5px;*!*/
+
+/*}*/
+
+.profileBar__container a {
+    text-decoration: none;
+    font-weight: bold;
+}
+.profileBar__container a:visited {
+    color: black;
+}
+

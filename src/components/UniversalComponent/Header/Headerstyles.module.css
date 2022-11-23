@@ -9,6 +9,15 @@
     grid-template-columns: 3fr 1fr 5fr 3fr;
 }
 
+.headerWrapperBlack {
+    display: grid;
+    grid-template-areas:
+    "pic ser bud out";
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: 3fr 1fr 5fr 3fr;
+    background-color: #3d4650;
+}
+
 .headerLogo {
     width: 100%;
     height: 100%;
@@ -96,6 +105,7 @@
     justify-content: flex-end;
     align-items: center;
 }
+
 .headerBudThemeControl {
     display: flex;
     margin-right: 120px;
@@ -103,9 +113,6 @@
     height: 50px;
     border-radius: 12px;
     background-color: #ECECEC;
-
-    /*justify-content: space-around;*/
-
 }
 
 .headerBudLanguageControl {
@@ -178,7 +185,9 @@
     display: flex;
     margin-left: 85px;
 }
+
 .headerSearchContainer {
+    /*padding-left: 20px;*/
     display: flex;
     align-items: center;
     width: 100%;
@@ -187,11 +196,14 @@
 }
 
 .headerSearch input {
+    padding-left: 20px;
+    display: flex;
     border: none;
     border-radius: 12px;
     background: #ECECEC;
+    /*opacity: 0.4;*/
     height: 50px;
-    width: 97%;
+    width: 90%;
     font-size: 24px;
     outline: none;
 }
@@ -207,7 +219,9 @@
 
 .headerSearchContainer input:focus ~ span  {
     display: none;
+
 }
+
 .headerSearchContainer input:focus ~ img  {
     display: none;
 }
@@ -223,7 +237,6 @@
     opacity: 0.3;
 }
 
-
 .headerLogOut {
     flex-wrap: wrap;
     grid-area: out;
@@ -235,6 +248,20 @@
     height: 100%;
     font-weight: bolder;
     text-decoration: none;
+}
+
+.headerLogOutBlack {
+    flex-wrap: wrap;
+    grid-area: out;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
+    text-decoration: none;
+    background-color: #3d4650;
 }
 
 .headerLogOutText {
@@ -249,13 +276,10 @@
 }
 
 .headerLogOutTextProfile {
-    /*flex-direction: row;*/
-    /*width: 100%;*/
     flex-wrap: wrap;
     position: relative;
     display: flex;
     text-decoration: none;
-    /*padding-left: 20%;*/
 }
 
 .headerLogOutText:visited {
@@ -271,20 +295,39 @@
     .headerLogoContainer1 {
         text-align: center;
     }
+
     .headerLogoBud {
         font-size: 28px;
         margin: 0px 10px 10px 5px;
     }
+
     .headerLogoDy {
         font-size: 42px;
         margin: 0px 0px -7px  -5px ;
     }
+
     .headerLogOut {
-        font-size: 14px;
+        font-size: 18px;
+        align-items: center;
     }
+
+    .headerLogOutBlack {
+        background-color: #3d4650;
+        font-size: 18px;
+        align-items: center;
+    }
+
+    .headerLogOut span {
+        margin-right: 10px;
+    }
+    /*.headerSearch input {*/
+    /*    font-size: 20px;*/
+    /*}*/
+
     .headerBudLanguageControl {
         display: none;
     }
+
     .headerBudThemeControl {
         margin: 0px 50px 0px 0px;
     }
@@ -294,12 +337,26 @@
     .headerSearch {
         transform: scale(0.9);
     }
+    /*.headerSearch input {*/
+    /*    font-size: 14px;*/
+    /*}*/
     .headerLogo {
         transform: scale(0.9);
         margin-left: -40px;
     }
     .headerLogOut {
         font-size: 14px;
+    }
+    .headerLogOutBlack {
+        font-size: 14px;
+        background-color: #3d4650;
+    }
+    .headerLogOutBlack span {
+        margin-right: 30px;
+
+    }
+    .headerLogOut span {
+        margin-right: 30px;
     }
     .headerLogoContainer {
         margin: 0px 0px 0px 0px;
@@ -311,7 +368,7 @@
     .headerBudContainer {
         justify-content: flex-end;
         align-items: center;
-        transform: scale(1);
+        transform: scale(0.9);
     }
 }
 
@@ -322,10 +379,16 @@
     .headerLogOut {
         font-size: 12px;
     }
+    .headerLogOut span {
+        margin-right: 10px;
+    }
     .headerLogo {
         transform: scale(0.9);
         margin-left: -20px;
     }
+    /*.headerBudBlack {*/
+    /*    background-color: #3d4650;*/
+    /*}*/
     .headerBudContainer {
         justify-content: flex-start;
         align-items: center;
@@ -340,6 +403,14 @@
         max-width: 100%;
         width: 100px;
 
+    }
+    .headerLogOutBlack {
+        font-size: 12px;
+        margin-left: -20px;
+        justify-content: center;
+        max-width: 100%;
+        width: 100px;
+        background-color: #3d4650;
     }
 
 }
