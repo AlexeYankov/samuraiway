@@ -1,70 +1,169 @@
-import React from 'react';
 import UniversalButton from "../UniversalComponent/Buttons/UniversalButton";
 import CRUDPanel from "./CRUDPanel/CRUDPanel";
 import Posts from "./Posts/Posts";
-import Info from "./Info/Info";
-import Avatar from './Avatar';
-import s from './Profilestyles.module.css'
-import ProfilePic from '../../pics/BarIcons/address-card-solid.svg'
-import MessagesPic from '../../pics/BarIcons/comment-solid.svg'
-import ShortsPic from '../../pics/BarIcons/circle-play-solid.svg'
-import MusicPic from '../../pics/BarIcons/headphones-solid.svg'
-import VideoPic from '../../pics/BarIcons/video-solid.svg'
-import GroupsPic from '../../pics/BarIcons/users-solid.svg'
-import GamesPic from '../../pics/BarIcons/gamepad-solid.svg'
-import SettingsPic from '../../pics/BarIcons/sliders-solid.svg'
+import Avatar from "./Components/Avatar";
+import { ReactComponent as InviteSVG } from "../../pics/Buttons/square-plus-solidGray.svg";
+import AdverstingIMG from "../../pics/adversting/Nestle.png";
+import img from "../../pics/Other/Iren.jpg";
+import img1 from "../../pics/Other/Alex.jpg";
+import img2 from "../../pics/Other/Fred.jpeg";
+import img3 from "../../pics/Other/Star.jpg";
+import img4 from "../../pics/Other/Nansy.jpg";
+import img5 from "../../pics/Other/Susy.jpg";
+import s from "./Profilestyles.module.css";
 
+import BarComponent from "./Components/BarComponent/BarComponent";
+import InfoComponent from "./Components/InfoComponent/InfoComponent";
+import CRUDComponent from "./Components/CRUDComponent/CRUDComponent";
 
 const ProfileHok = () => {
-    const NavListTags = [
-        {id: 0, tag: 'Profile', icon: ProfilePic, styleName:s.one},
-        {id: 1, tag: 'Messages', icon: MessagesPic, styleName:s.two},
-        {id: 2, tag: 'Shorts', icon: ShortsPic, styleName:s.three},
-        {id: 3, tag: 'Music', icon: MusicPic, styleName:s.four},
-        {id: 4, tag: 'Video', icon: VideoPic, styleName:s.six},
-        {id: 5, tag: 'Groups', icon: GroupsPic, styleName: s.nine},
-        {id: 6, tag: 'Games', icon: GamesPic, styleName:s.seven},
-        {id: 7, tag: 'Settings', icon: SettingsPic, styleName:s.eight},
-    ]
-    const GenericBar = NavListTags.map(el => {
-            return (
-                <a href={''} >
-                    <img className={el.styleName} src={el.icon} alt=""/>
-                    {el.tag}
-                </a>
-            )
-        }
-    )
+  const someFn = () => {
+    console.log("f");
+  };
 
+  return (
+    <section className={s.profileWrapper}>
+      <article>
+        <article className={s.profileBar}>
+          <BarComponent />
+        </article>
 
-    return (
-        <section className={s.profileWrapper}>
-            <article className={s.profileBar}>
-                <nav className={s.profileBar__container}>
-                    {GenericBar}
-                </nav>
-            </article>
-            <article className={s.profileBar__buttons}>
-                <UniversalButton/>
-                <UniversalButton/>
-            </article>
+        <article className={s.profileButtons}>
+          <UniversalButton
+            className={s.profileButtons__logOut}
+            onClick={someFn}
+          >
+            log out
+          </UniversalButton>
 
-            <article className={s.profileAvatar}>
-                <Avatar/>
-                <aside>subscribers</aside>
-                <aside>advertising</aside>
-            </article>
+          <UniversalButton
+            className={s.profileButtons__deleteAccount}
+            onClick={someFn}
+          >
+            delete your account
+          </UniversalButton>
+        </article>
+      </article>
 
-            <article className={s.profileInfo}>
-                <Info/>
-                <CRUDPanel/>
-                <Posts/>
-            </article>
+      <article className={s.profileAvatar}>
+        <Avatar />
+      </article>
 
-            <article className={s.profileAside}>
-            </article>
-        </section>
-    );
+      <article className={s.profileTexting}>
+        <div className={s.profileTexting__container}>
+          <div className={s.profileTexting__buttonContainer}>
+            <UniversalButton className={s.profileTexting__button}>
+              <InviteSVG
+                className={s.profileTexting__buttonImg}
+                fill="white"
+                width="20"
+                height="22"
+              />
+              <span className={s.profileTexting__button_Invite}>Follow</span>
+            </UniversalButton>
+
+            <UniversalButton className={s.profileTexting__button}>
+              <InviteSVG
+                className={s.profileTexting__buttonImg}
+                fill="white"
+                width="20"
+                height="22"
+              />
+              <span className={s.profileTexting__button_Invite}>Message</span>
+            </UniversalButton>
+          </div>
+
+          <UniversalButton className={s.profileTexting__blackList}>
+            <span>send to black list</span>
+          </UniversalButton>
+
+          <div className={s.profileSubscribers__container}>
+            <div className={s.profileSubscribers__buttons}>
+              <a className={s.profileSubscribers__count} href={""}>
+                Subscribers
+              </a>
+
+              <a className={s.profileSubscribers__count} href={""}>
+                6743
+              </a>
+            </div>
+
+            <div className={s.profileSubscribers__showingList_top}>
+              <a className={s.profileSubscribers__listContainer} href="">
+                <img
+                  className={s.profileSubscribers__AvaMin}
+                  src={img}
+                  alt="Photo"
+                />
+                <span>Iren</span>
+              </a>
+              <a className={s.profileSubscribers__listContainer} href="">
+                <img
+                  className={s.profileSubscribers__AvaMin}
+                  src={img1}
+                  alt="Photo1"
+                />
+                <span>Alex</span>
+              </a>
+              <a className={s.profileSubscribers__listContainer} href="">
+                <img
+                  className={s.profileSubscribers__AvaMin}
+                  src={img2}
+                  alt="Photo2"
+                />
+                <span>Fred</span>
+              </a>
+            </div>
+
+            <div className={s.profileSubscribers__showingList_top}>
+              <a className={s.profileSubscribers__listContainer} href={""}>
+                <img
+                  className={s.profileSubscribers__AvaMin}
+                  src={img3}
+                  alt="Photo3"
+                />
+                <span>Star</span>
+              </a>
+              <a className={s.profileSubscribers__listContainer} href="">
+                <img
+                  className={s.profileSubscribers__AvaMin}
+                  src={img4}
+                  alt="Photo4"
+                />
+                <span>Nansy</span>
+              </a>
+              <a className={s.profileSubscribers__listContainer} href="">
+                <img
+                  className={s.profileSubscribers__AvaMin}
+                  src={img5}
+                  alt="Photo5"
+                />
+                <span>Susy</span>
+              </a>
+            </div>
+          </div>
+          <div className={s.profileAdversting}>
+            <a href="">
+              <img src={AdverstingIMG} alt="" />
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article className={s.profileInfo}>
+        <InfoComponent />
+      </article>
+
+      <article className={s.profileInfo__posts}>
+        <CRUDComponent />
+        <Posts />
+        <Posts />
+        <Posts />
+      </article>
+
+      <article className={s.profileAside}></article>
+    </section>
+  );
 };
 
 export default ProfileHok;

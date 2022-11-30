@@ -1,0 +1,105 @@
+.ProfilePic {
+    padding: 10px 0px 0px 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.ProfilePic img {
+    margin: 0px 10px 0px 0px;
+    width: 32px;
+    height: 28px;
+}
+
+.MessagesPic  {
+    padding: 0px 0px 0px 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.MessagesPic img  {
+    margin: 0px 10px 0px 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.ShortsPic  {
+    padding: 0px 0px 0px 13px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.ShortsPic img  {
+    margin: 0px 13px 0px 0px;
+    width: 25px;
+    height: 25px;
+    /*scale: 1.2;*/
+}
+
+.MusicPic  {
+    padding: 0px 0px 0px 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.MusicPic img  {
+    margin: 0px 12px 0px 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.VideoPic  {
+    padding: 0px 0px 0px 8px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.VideoPic img  {
+    margin: 0px 10px 0px 0px;
+    width: 35px;
+    height: 25px;
+}
+
+.GroupsPic  {
+    padding: 0px 0px 0px 12px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.GroupsPic img  {
+    margin: 0px 13px 0px 0px;
+    width: 25px;
+    height: 30px;
+}
+
+.GamesPic  {
+    padding: 0px 0px 0px 7px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.GamesPic img  {
+    margin: 0px 8px 0px 0px;
+    width: 35px;
+    height: 25px;
+}
+
+.SettingsPic  {
+    padding: 0px 0px 0px 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.SettingsPic img  {
+    margin: 2px 10px 0px 0px;
+    width: 30px;
+    height: 25px;
+}
+

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import LanguageControl from './LanguageControl';
 import ThemeControl from './ThemeControl';
 import s from './Headerstyles.module.css'
-import logo from '../../../pics/pic1.png'
-import search from '../../../pics/magnifying-glass-solid.svg'
+import logo from '../../../pics/IconFavicon/pic1.png'
+import search from '../../../pics/Other/magnifying-glass-solid.svg'
 
 
 const Header = () => {
@@ -19,8 +19,6 @@ const Header = () => {
     }
     const fontColor = color === 'White' ? {color: 'black'} : {color: 'white'}
     const black = color === 'White' ? s.headerLogOut : s.headerLogOutBlack
-    // const black1 = color === 'White' ? s.headerBudContainer : s.headerBudContainerBlack
-
 
     return (
         <nav className={colorCallBack}>

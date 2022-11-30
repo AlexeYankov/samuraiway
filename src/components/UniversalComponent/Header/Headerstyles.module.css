@@ -33,7 +33,7 @@
     display: flex;
     height: 100%;
     width: 100%;
-    margin-right: 85px;
+    margin-right: 125px;
     flex-wrap: wrap;
 }
 .headerLogoContainer1 {
@@ -43,7 +43,7 @@
     justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
-    padding-right: 85px;
+    padding-right: 125px;
 }
 
 .headerLogoImg {
@@ -179,11 +179,12 @@
 
 .headerSearch {
     grid-area: ser;
+    max-width: 100%;
     width: 225px;
     justify-content: start;
     align-items: center;
     display: flex;
-    margin-left: 85px;
+    /*margin-left: 35px;*/
 }
 
 .headerSearchContainer {
@@ -359,11 +360,11 @@
         margin-right: 30px;
     }
     .headerLogoContainer {
-        margin: 0px 0px 0px 0px;
+        margin: 0px 70px 0px 0px;
         /*transform: scale(0.8);*/
     }
     .headerLogoContainer1 {
-        padding: 0px 00px 0px 0px;
+        padding: 0px 70px 0px 0px;
     }
     .headerBudContainer {
         justify-content: flex-end;

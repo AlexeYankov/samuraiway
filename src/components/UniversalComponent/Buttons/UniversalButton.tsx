@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react'
+import s from './UniversalButton.module.css'
 
-const UniversalButton = () => {
+type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
+type UniversalButtonPropsType = DefaultButtonPropsType & {
+    red?: boolean
+    className?: string
+
+}
+
+const UniversalButton: React.FC<UniversalButtonPropsType> = (
+    {
+        red,className,
+        ...restProps
+    }
+) => {
+    const finalClassName = `${red ? s.red : s.default} ${className}`
     return (
-        <button>
-
-        </button>
+        <button
+            className={finalClassName}
+            {...restProps}
+        />
     );
 };
 
