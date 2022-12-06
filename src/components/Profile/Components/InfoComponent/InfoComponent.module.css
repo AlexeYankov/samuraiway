@@ -40,7 +40,7 @@
 }
 
 .info__UserOnlineStatus {
-    margin: 0px;
+    margin: -10px -50px 0px 0px;
     opacity: 0.7;
     font-weight: Medium;
     font-family: Roboto;
@@ -54,8 +54,8 @@
     align-items: flex-start;
     width: 90%;
     max-width: 100%;
-    border-bottom: 1px solid gray;
-    border-top: 1px solid gray;
+    border-bottom: 2px solid rgb(207, 198, 198);
+    border-top: 2px solid rgb(207, 198, 198);
     margin-left: 20px;
     min-height: 135px;
     max-height: 100%;

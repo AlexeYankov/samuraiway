@@ -1,10 +1,14 @@
 import React from 'react';
 import s from '../Profilestyles.module.css'
-import AvatarIcon from "../../../pics/Other/Tony_Soprano_Portrait.jpg";
 
-const Avatar = () => {
+type AvatarType = {
+    photo: string
+}
+
+
+const Avatar = ({photo}: AvatarType) => {
     return (
-        <img className={s.profileAvatar} src={AvatarIcon}>
+        <img className={s.profileAvatar} src={photo}>
             
         </img>
     );

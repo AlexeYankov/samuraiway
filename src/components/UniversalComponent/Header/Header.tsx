@@ -70,10 +70,10 @@ const Header = () => {
                 ) : (
                     <article className={black}>
                         <a className={s.headerLogOutTextProfile} style={fontColor} href="">
-                            <span>sign in</span>
+                            <p>sign in</p>
                         </a>
                         <a className={s.headerLogOutTextProfile} style={fontColor} href="">
-                            <span>create new account</span>
+                            <p>create new account</p>
                         </a>
                     </article>
                 )

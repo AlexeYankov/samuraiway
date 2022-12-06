@@ -1,9 +1,9 @@
 import UniversalButton from "../UniversalComponent/Buttons/UniversalButton";
-import CRUDPanel from "./CRUDPanel/CRUDPanel";
-import Posts from "./Posts/Posts";
 import Avatar from "./Components/Avatar";
 import { ReactComponent as InviteSVG } from "../../pics/Buttons/square-plus-solidGray.svg";
 import AdverstingIMG from "../../pics/adversting/Nestle.png";
+import AvatarIcon from "../../pics/Other/Tony_Soprano_Portrait.jpg";
+
 import img from "../../pics/Other/Iren.jpg";
 import img1 from "../../pics/Other/Alex.jpg";
 import img2 from "../../pics/Other/Fred.jpeg";
@@ -15,12 +15,14 @@ import s from "./Profilestyles.module.css";
 import BarComponent from "./Components/BarComponent/BarComponent";
 import InfoComponent from "./Components/InfoComponent/InfoComponent";
 import CRUDComponent from "./Components/CRUDComponent/CRUDComponent";
+import PostComponent from "./Components/PostComponent/PostComponent";
+import Messages from "./Messages/Messages";
 
 const ProfileHok = () => {
   const someFn = () => {
     console.log("f");
   };
-
+  const postText = "fgfr";
   return (
     <section className={s.profileWrapper}>
       <article>
@@ -45,8 +47,9 @@ const ProfileHok = () => {
         </article>
       </article>
 
+      
       <article className={s.profileAvatar}>
-        <Avatar />
+        <Avatar photo={AvatarIcon} />
       </article>
 
       <article className={s.profileTexting}>
@@ -156,9 +159,22 @@ const ProfileHok = () => {
 
       <article className={s.profileInfo__posts}>
         <CRUDComponent />
-        <Posts />
-        <Posts />
-        <Posts />
+        <PostComponent 
+        name="John" 
+        photo={AvatarIcon} 
+        post={postText} 
+        pinned={true} />
+        <PostComponent
+          name="John"
+          photo={AvatarIcon}
+          post={postText}
+          postSearch={true}
+        />
+        <PostComponent
+          name="John"
+          photo={AvatarIcon}
+          post={postText}
+        />
       </article>
 
       <article className={s.profileAside}></article>
