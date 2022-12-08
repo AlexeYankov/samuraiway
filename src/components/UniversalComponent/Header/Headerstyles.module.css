@@ -338,12 +338,8 @@
     .headerSearch {
         transform: scale(0.9);
     }
-    /*.headerSearch input {*/
-    /*    font-size: 14px;*/
-    /*}*/
-    .headerLogo {
+        .headerLogo {
         transform: scale(0.9);
-        margin-left: -40px;
     }
     .headerLogOut {
         font-size: 14px;
@@ -385,7 +381,7 @@
     }
     .headerLogo {
         transform: scale(0.9);
-        margin-left: -20px;
+        /* margin-left: -20px; */
     }
     /*.headerBudBlack {*/
     /*    background-color: #3d4650;*/

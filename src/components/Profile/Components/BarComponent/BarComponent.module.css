@@ -1,5 +1,5 @@
 .ProfilePic {
-    padding: 10px 0px 0px 10px;
+    margin: 0px 10px 0px 10px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -12,16 +12,15 @@
 }
 
 .MessagesPic  {
-    padding: 0px 0px 0px 10px;
+    margin: 0px 0px 0px 8px;
     align-items: center;
-    justify-content: center;
     display: flex;
 }
 
 .MessagesPic img  {
-    margin: 0px 10px 0px 0px;
-    width: 30px;
-    height: 30px;
+    margin: 5px 10px 0px 5px;
+    width: 25px;
+    height: 25px;
 }
 
 .ShortsPic  {
@@ -102,4 +101,22 @@
     width: 30px;
     height: 25px;
 }
+
+.isActiveStyle {
+    /* background-color: black; */
+    background-color: rgba(152, 215, 233, 0.6);
+    color: white;
+    width: 225px;
+    border-radius: 12px;
+    display: flex;
+    width: 90%;
+}
+
+.isActiveStyle img{
+    /* margin: 8px 10px 0px 5px; */
+    width: 30px;
+    height: 25px;
+    margin-top: 0px;
+}
+
 

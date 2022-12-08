@@ -125,3 +125,8 @@
     font-size: 14px;
     font-weight: medium;
 }
+
+.info__generalData__Birth__Date {
+    font-family: Roboto;
+    font-weight: 600;
+}

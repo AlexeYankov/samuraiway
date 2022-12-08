@@ -1,32 +1,16 @@
 .profileWrapper {
     display: grid;
     grid-template-areas:
-    "pic ser bud out"
-    "pic1 ser1 bud1 out1";
+    "ser bud"
+    "ser1 bud1";
     grid-template-rows: 340px 1fr;
-    grid-template-columns: 3fr 1fr 5fr 3fr;
+    grid-template-columns: 1fr 5fr;
     background-color: #EFEFEF;
     height: 100%;
-}
-
-.profileBar {
-    grid-area: pic;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    max-height: 340px;
-}
-
-.profileBar__buttons {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 220px;
-    height: 50px;
+    width: 100%;
 }
 
 .profileAvatar {
-    /*padding-top: 30px;*/
     max-width: 100%;
     max-height: 340px;
     display: flex;
@@ -34,10 +18,7 @@
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    /*margin-left: 85px;*/
     min-width: 225px;
-    /* width: 225px; */
-    border: 1px solid red;
 }
 .profileAvatar img {
     min-width: 100px;
@@ -64,101 +45,11 @@
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
-    border: 3px solid blue;
-}
-
-.profileAside {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    grid-area: out;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border: 3px solid green;
-}
-
-.profileBar__container {
-    border-bottom: 2px solid rgb(207, 198, 198);
-    border-top: 2px solid rgb(207, 198, 198);
-    display: flex;
-    flex-wrap: wrap;
-    width: 50%;
-    height: 100%;
-    margin-top: 30px;
-    max-height: 310px;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.profileBar__container a {
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.profileBar__container img {
-    opacity: 0.7;
-}
-
-.profileBar__container a:visited {
-    color: black;
-}
-
-.profileBar a:hover {
-    transform: scale(1.1);
-    transition: 0.25s;
-}
-
-.profileBar a {
-   padding-bottom: 10px;
-}
-
-.profileButtons {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    flex-direction: column;
-    grid-area: pic1;
-    background-color: #EFEFEF;
-}
-
-.profileButtons button {
-    width: 220px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    grid-area: pic1;
-}
-
-.profileButtons button:hover {
-    transition: 0.25s;
-    transform: scale(1.05);
-}
-
-
-.profileButtons__logOut {
-    background-color: black;
-    color: white;
-    width:100%;
-    height: 100%;
-}
-
-.profileButtons__deleteAccount {
-    opacity: 0.75;
-    background-color: #DC0000;
-    color: white;
-    width: 100%;
-    height: 100%;
 }
 
 .profileSubscribers__container {
     margin-top: 30px;
     max-width: 100%;
-    /*border: 2px solid red;*/
     border-radius: 12px;
     background-color: white;
     max-height: 100%;
@@ -175,11 +66,6 @@
 }
 
 .profileTexting__buttonImg {
-    margin: -20px 0px 0px -65px;
-    position: absolute;
-}
-
-.profileTexting__buttonImg :hover {
     margin: -20px 0px 0px -65px;
     position: absolute;
 }
@@ -216,6 +102,13 @@
 .profileTexting__container button:hover {
     transition: 0.25s;
     transform: scale(1.05);
+}
+.profileTexting__container button:hover svg {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    margin: 0px 65px 20px 0px;
 }
 
 .profileTexting__buttonContainer {

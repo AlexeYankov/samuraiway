@@ -1,0 +1,117 @@
+.App {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.AppWrapper {
+  display: grid;
+  grid-template-areas:
+  "pic bud out";
+  grid-template-columns: 3fr 6fr 3fr;
+  background-color: #EFEFEF;
+  height: 100vh;
+  width: 100%;
+}
+
+.profileAppWrapper {
+  width: 100%;
+  /* height: 50%; */
+  grid-area: bud;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.componentAside {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  grid-area: out;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 1px solid red;
+}
+
+.menuBar {
+  grid-area: pic;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: 1px solid red;
+  flex-wrap: wrap;
+}
+
+.menuBar__container {
+  border-bottom: 2px solid rgb(207, 198, 198);
+  border-top: 2px solid rgb(207, 198, 198);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menuBar__container a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menuBar__container img {
+  opacity: 0.7;
+}
+
+.menuBar__container a:visited {
+  color: black;
+}
+
+.menuBar a:hover {
+  transform: scale(1.1);
+  transition: 0.25s;
+  background-color: rgba(152, 215, 233, 0.6);
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 8px;
+
+}
+
+.menuBar a {
+ padding-bottom: 5px;
+ padding-top: 5px;
+}
+
+
+.menuBar button {
+  width: 220px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menuBar button:hover {
+  transition: 0.25s;
+  transform: scale(1.05);
+}
+
+.menuButtons__logOut {
+  background: black;
+  color: white;
+  width:100%;
+  height: 100%;
+}
+
+.menuButtons__deleteAccount {
+    background-color: #DC0000;
+    opacity: 0.75;
+    width: 100%;
+}

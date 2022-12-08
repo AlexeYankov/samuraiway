@@ -41,7 +41,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin: 15px -15px 0px 0px;
+    margin: 15px 0px 0px 10px;
     
 }
 
@@ -112,11 +112,25 @@
 }
 
 .posts_footer__container {
-    
     display: flex;
     align-items: center;
     justify-content: center;
     height: 40px;
+}
+
+.posts_footer__container button {
+    border: none;
+    background: none;
+
+}
+.posts_footer__container button:hover {
+    border: none;
+    background: none;
+
+}
+.posts_footer__container button:hover svg {
+    fill: black;
+
 }
 
 .posts_footer__container__icons {
@@ -130,13 +144,6 @@
 .posts_footer__container__icons span {
     margin-left: 10px;
     font-size: 18px;
-    
-}
-
-.posts_footer__container__icons svg:hover {
-    transition: 0.15s ease-out;
-    transform: scale(1.2);
-    fill: black;
     
 }
 

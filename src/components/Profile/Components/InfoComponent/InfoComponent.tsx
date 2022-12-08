@@ -28,7 +28,7 @@ const InfoComponent = () => {
         <div className={s.info__generalData__Birth}>
           <span>Date of Birth:</span>
           <article>
-            <span>18/09/1961</span>
+            <span className={s.info__generalData__Birth__Date}>18/09/1961</span>
           </article>
         </div>
         <div className={s.info__generalData__City}>
