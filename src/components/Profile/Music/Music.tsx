@@ -1,8 +1,8 @@
-import React from 'react';
+import s from '../../../App.module.css'
 
 const Music = () => {
     return (
-        <section>
+        <section className={s.profileAppWrapper}>
             Music
         </section>
     );

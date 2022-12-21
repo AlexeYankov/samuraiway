@@ -13,7 +13,7 @@
 .posts__header {
     width: 100%;
     display: flex;
-    
+    justify-content: space-between;
 }
 .posts__header__search {
     margin: 10px 0px 0px 20px;
@@ -31,23 +31,23 @@
 
 .posts__header__icon {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    margin: 10px 0px 0px 20px;
-    margin-bottom: 1%;
+    margin-right: 25px;
 }
 
 .posts__userPhoto img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin: 15px 0px 0px 10px;
+    margin: 15px -10px 0px 00px;
     
 }
 
 .posts__userPhoto {
     width: 10%;
     border-radius: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 
 }
 .posts__userPost {
@@ -108,37 +108,24 @@
     width: 90%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start
 }
 
 .posts_footer__container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     height: 40px;
-}
-
-.posts_footer__container button {
-    border: none;
-    background: none;
-
-}
-.posts_footer__container button:hover {
-    border: none;
-    background: none;
-
-}
-.posts_footer__container button:hover svg {
-    fill: black;
-
 }
 
 .posts_footer__container__icons {
     display: flex;
-    align-items: center;
-    width: 80px;
-    border: 1x solid blue;
+    align-items: flex-start;
+    width: 100px;
+    border: none;
+    background: none;
     flex-wrap: wrap;
+    padding-bottom: 5px;
 }
 
 .posts_footer__container__icons span {
@@ -148,6 +135,8 @@
 }
 
 .posts_footer__container__icons:last-child {
-    width: 100px;
+    justify-content: flex-end;
+    width: 80%;
+    padding-right: 40px;
 }
 

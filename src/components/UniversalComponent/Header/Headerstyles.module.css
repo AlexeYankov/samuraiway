@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Raleway:wght@600;800&display=swap');
 
 .headerWrapper {
+    background: #fff;
     display: grid;
     grid-template-areas:
     "pic ser bud out";

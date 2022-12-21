@@ -3,7 +3,7 @@ import LanguageControl from './LanguageControl';
 import ThemeControl from './ThemeControl';
 import s from './Headerstyles.module.css'
 import logo from '../../../pics/IconFavicon/pic1.png'
-import search from '../../../pics/Other/magnifying-glass-solid.svg'
+import search from '../../../pics/PostsIcons/magnifying-glass-solid.svg'
 
 
 const Header = () => {

@@ -1,9 +1,9 @@
 import UniversalButton from "../UniversalComponent/Buttons/UniversalButton";
 import Avatar from "./Components/Avatar";
 import { ReactComponent as InviteSVG } from "../../pics/Buttons/square-plus-solidGray.svg";
+import { useEffect, useState } from "react";
 import AdverstingIMG from "../../pics/adversting/Nestle.png";
 import AvatarIcon from "../../pics/Other/Tony_Soprano_Portrait.jpg";
-
 import img from "../../pics/Other/Iren.jpg";
 import img1 from "../../pics/Other/Alex.jpg";
 import img2 from "../../pics/Other/Fred.jpeg";
@@ -16,12 +16,38 @@ import r from "../../App.module.css";
 import InfoComponent from "./Components/InfoComponent/InfoComponent";
 import CRUDComponent from "./Components/CRUDComponent/CRUDComponent";
 import PostComponent from "./Components/PostComponent/PostComponent";
+import TextAreaComponent from "./Components/CRUDComponent/TextAreaComponent";
+import axios from "axios";
 
-const ProfileHok = () => {
-  const someFn = () => {
-    console.log("f");
-  };
+const ProfileContainer = () => {
+  // useEffect(()=> {
+  //   axios.get()
+  // })
+  const [post, setPost] = useState<boolean>(false);
+  const pinned = 1;
   const postText = "fgfr";
+  const pinnedPost = pinned ? (
+    <PostComponent
+      name="John"
+      photo={AvatarIcon}
+      post={postText}
+      pinned={true}
+    />
+  ) : (
+    <PostComponent
+      name="John"
+      photo={AvatarIcon}
+      post={postText}
+      postSearch={true}
+    />
+  );
+  const [value, someValue]= useState<string>('')
+  console.log(value)
+  const openPostFn = () => {
+    setPost(!post);
+    
+    // someValue()
+  }
   return (
     <article className={r.profileAppWrapper}>
       <section className={s.profileWrapper}>
@@ -135,19 +161,13 @@ const ProfileHok = () => {
         </article>
 
         <article className={s.profileInfo__posts}>
-          <CRUDComponent />
-          <PostComponent
-            name="John"
-            photo={AvatarIcon}
-            post={postText}
-            pinned={true}
+          <CRUDComponent
+            addPost={openPostFn}
+            // shorts={shorts}
+            // group={group}
           />
-          <PostComponent
-            name="John"
-            photo={AvatarIcon}
-            post={postText}
-            postSearch={true}
-          />
+          {post ? <TextAreaComponent closeFn={openPostFn} value={value} onChange={(str)=> someValue(str)} /> : ""}
+          {pinnedPost}
           <PostComponent name="John" photo={AvatarIcon} post={postText} />
         </article>
 
@@ -157,4 +177,4 @@ const ProfileHok = () => {
   );
 };
 
-export default ProfileHok;
+export default ProfileContainer;

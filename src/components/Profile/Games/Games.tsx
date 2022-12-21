@@ -1,10 +1,10 @@
-import React from 'react';
+import s from '../../../App.module.css'
 
 const Games = () => {
     return (
-        <div>
+        <section className={s.profileAppWrapper}>
             
-        </div>
+        </section>
     );
 };
 

@@ -11,7 +11,7 @@ type UniversalButtonPropsType = DefaultButtonPropsType & {
 
 const UniversalButton: React.FC<UniversalButtonPropsType> = (
     {
-        red,className,
+        red, className,
         ...restProps
     }
 ) => {

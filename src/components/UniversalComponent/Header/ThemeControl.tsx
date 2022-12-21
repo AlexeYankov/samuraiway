@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import s from './Headerstyles.module.css'
-import BlackTheme from '../../../pics/Other/moon-solid.svg'
-import WhiteTheme from '../../../pics/Other/sun-regular.svg'
+import BlackTheme from '../../../pics/PostsIcons/moon-solid.svg'
+import WhiteTheme from '../../../pics/PostsIcons/sun-regular.svg'
 
 type ThemeColorType = {
     color: (active: string) => void
