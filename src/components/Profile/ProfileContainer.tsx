@@ -1,7 +1,7 @@
 import UniversalButton from "../UniversalComponent/Buttons/UniversalButton";
 import Avatar from "./Components/Avatar";
 import { ReactComponent as InviteSVG } from "../../pics/Buttons/square-plus-solidGray.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AdverstingIMG from "../../pics/adversting/Nestle.png";
 import AvatarIcon from "../../pics/Other/Tony_Soprano_Portrait.jpg";
 import img from "../../pics/Other/Iren.jpg";
@@ -17,21 +17,24 @@ import InfoComponent from "./Components/InfoComponent/InfoComponent";
 import CRUDComponent from "./Components/CRUDComponent/CRUDComponent";
 import PostComponent from "./Components/PostComponent/PostComponent";
 import TextAreaComponent from "./Components/CRUDComponent/TextAreaComponent";
-import axios from "axios";
 
 const ProfileContainer = () => {
-  // useEffect(()=> {
-  //   axios.get()
-  // })
+  const [someVar, setA] = useState<boolean>(false);
   const [post, setPost] = useState<boolean>(false);
+  const [shorts, setShorts] = useState<boolean>(false);
   const pinned = 1;
   const postText = "fgfr";
+  const openCloseMoreBtn = () => {
+    setA(!someVar)
+  }
   const pinnedPost = pinned ? (
     <PostComponent
       name="John"
       photo={AvatarIcon}
       post={postText}
       pinned={true}
+      setA={openCloseMoreBtn} 
+      someVar={someVar}
     />
   ) : (
     <PostComponent
@@ -39,15 +42,26 @@ const ProfileContainer = () => {
       photo={AvatarIcon}
       post={postText}
       postSearch={true}
+      setA={openCloseMoreBtn} 
+      someVar={someVar}
     />
   );
-  const [value, someValue]= useState<string>('')
-  console.log(value)
+  const [value, someValue] = useState<string>("");
+  const [valueShorts, someShorts] = useState<string>("");
+  console.log(value);
   const openPostFn = () => {
     setPost(!post);
-    
-    // someValue()
-  }
+    setShorts(false);
+  };
+  const addShorts = () => {
+    setShorts(!shorts);
+    setPost(false);
+  };
+  const closePostFn = () => {
+    setPost(false);
+    setShorts(false);
+  };
+  
   return (
     <article className={r.profileAppWrapper}>
       <section className={s.profileWrapper}>
@@ -163,12 +177,31 @@ const ProfileContainer = () => {
         <article className={s.profileInfo__posts}>
           <CRUDComponent
             addPost={openPostFn}
-            // shorts={shorts}
-            // group={group}
+            addShorts={addShorts}
           />
-          {post ? <TextAreaComponent closeFn={openPostFn} value={value} onChange={(str)=> someValue(str)} /> : ""}
+          {post ? (
+            <TextAreaComponent
+              accept={"image/*,.png,.jpg,.gif,.web,.webp"}
+              closeFn={closePostFn}
+              value={value}
+              onChange={(str) => someValue(str)}
+            />
+          ) : (
+            ""
+          )}
+          {shorts ? (
+            <TextAreaComponent
+              accept={"video/mp4,video/x-m4v,video/*"}
+              closeFn={closePostFn}
+              value={valueShorts}
+              onChange={(str) => someShorts(str)}
+              shorts={true}
+            />
+          ) : (
+            ""
+          )}
           {pinnedPost}
-          <PostComponent name="John" photo={AvatarIcon} post={postText} />
+          <PostComponent name="John" photo={AvatarIcon} post={postText} setA={openCloseMoreBtn} someVar={someVar} />
         </article>
 
         <article className={s.profileAside}></article>

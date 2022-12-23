@@ -25,15 +25,15 @@ const Header = () => {
 
             <article className={s.headerLogo}>
                 <article className={s.headerLogoContainer}>
-                    <label className={s.headerLogoContainer1} htmlFor="Foo">
-                        <a className={s.headerLogoImg} id={'Foo'} onClick={aCallBack}>
+                    <label className={s.headerLogoContainer1}>
+                        <a className={s.headerLogoImg} onClick={aCallBack}>
                             <div className={s.headerLogoBudContainer}>
                                 <img src={logo} alt="buddy"/>
-                                <span className={s.headerLogoBud} id={'Foo'}>
+                                <span className={s.headerLogoBud}>
                                      bud
                                 </span>
 
-                                <span className={s.headerLogoDy} id={'Foo'}>
+                                <span className={s.headerLogoDy}>
                                         dy
                                 </span>
                             </div>

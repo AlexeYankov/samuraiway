@@ -8,7 +8,6 @@ const PostComponentFooter = () => {
       <button key={el.id} className={s.posts_footer__container__icons}>
         <SomeSVGComponent propsPath={el.tag}/>
         <span>{el.value}</span>
-        
       </button>
       );
     });

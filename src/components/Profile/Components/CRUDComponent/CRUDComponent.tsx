@@ -4,12 +4,11 @@ import SearchSVG from "../../../../pics/PostsIcons/magnifying-glass-solid.svg";
 
 type CRUDType = {
     addPost: () => void,
-    // shorts: ()=> void,
-    // group: ()=> void
+    addShorts: () => void,
 }
 
-const CRUDComponent = ({addPost}:CRUDType) => {
-  
+const CRUDComponent = ({addPost, addShorts}:CRUDType) => {
+
   return (
     <div className={s.crud__container}>
       <button className={s.crud__unit} onClick={addPost}>
@@ -19,13 +18,9 @@ const CRUDComponent = ({addPost}:CRUDType) => {
           new post
         </span>
       </button>
-      <button className={s.crud__unit} >
+      <button className={s.crud__unit} onClick={addShorts}>
         <AddSVG fill="255" width="20" height="22" opacity="0.7" />
         <span>#Shorts</span>
-      </button>
-      <button className={s.crud__unit} >
-      <AddSVG fill="255" width="20" height="22" opacity="0.7" />
-        <span>Group</span>
       </button>
       <div className={s.crud__SearchContainer}>
         <input type="text" />

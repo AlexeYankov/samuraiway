@@ -7,9 +7,14 @@ type NickType = {
   post: string;
   pinned?: boolean;
   postSearch?: boolean;
+  setA?: () => void;
+  someVar?:boolean;
+  
+  
+
 };
 
-const PostComponent = ({ name, photo, post, pinned, postSearch }: NickType) => {
+const PostComponent = ({ name, photo, post, pinned, postSearch, setA, someVar }: NickType) => {
   const someShowFn = () => console.log("Clicked");
   const pinnedPostJSX = pinned ? (
     <span>
@@ -35,13 +40,27 @@ const PostComponent = ({ name, photo, post, pinned, postSearch }: NickType) => {
         <svg
           width={25}
           fill="gray"
-          xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
           <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z" />
         </svg>
       </div>
     </div>
+  ) : (
+    ""
+  );
+  
+  const logFn = () => {
+    console.log(3)
+  }
+  const someFn = someVar ? (
+    <ul
+      className={s.moreButton__Menu}
+    >
+      <li onClick={logFn}>sss</li>
+      <li onClick={logFn}>sss</li>
+      <li onClick={logFn}>sss</li>
+    </ul>
   ) : (
     ""
   );
@@ -59,15 +78,21 @@ const PostComponent = ({ name, photo, post, pinned, postSearch }: NickType) => {
             <br />
             <span className={s.posts__post__date}>11 jun 2012</span>
           </div>
-          <svg
-            className={s.posts__user__moreButton}
-            width={35}
-            fill="gray"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
+          <button
+            style={{ background: "none", border: "none" }}
+            onClick={setA}
           >
-            <path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z" />
-          </svg>
+            {someFn}
+            <svg
+              className={s.posts__user__moreButton}
+              width={35}
+              fill="gray"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z" />
+            </svg>
+          </button>
         </div>
       </div>
       <div className={s.posts__post}>
