@@ -1,8 +1,10 @@
 import s from './SomeSVG.module.css'
 
 type SVGType = {
+   
     propsPath: string,
     fill?:string
+    
 }
 
 const SomeSVGComponent = (a: SVGType) => {

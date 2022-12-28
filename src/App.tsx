@@ -12,34 +12,44 @@ import Header from "./components/UniversalComponent/Header/Header";
 import BarComponent from "./components/Profile/Components/BarComponent/BarComponent";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { CRUDType } from "./state/profileState/CRUDState";
+import { useDispatch, useSelector } from "react-redux";
+import { AppRootStateType } from "./state/store";
 
-type usersType = {
-  aboutMe: string,
+export type usersType = {
+  aboutMe: string;
   contacts: {
-    facebook: string,
-    website: string,
-    vk: string,
-    twitter: string,
-  },
-  fullName: string,
-  lookingForAJob: boolean,
-  lookingForAJobDescription: string,
+    github: string;
+    vk: string;
+    facebook: string;
+    instagram: string;
+    twitter: string;
+    website: string;
+    youtube: string;
+    mainLink: string;
+  };
+  fullName: string;
+  lookingForAJob: boolean;
+  lookingForAJobDescription: string;
+  userID: number;
   photos: {
-    large:string, 
-    small: string
-  },
-  userID: number
-}
+    large: string;
+    small: string;
+  };
+  subscribers:number
+};
 
 function App() {
-  const [users, setUsers] = useState<usersType>()
+  const [users, setUsers] = useState<usersType>();
+  const postsCount = useSelector<AppRootStateType, usersType>(state => state.profile)
   useEffect(() => {
-    axios.get('https://social-network.samuraijs.com/api/1.0/profile/27193')
-    .then(response => {
-    setUsers(response.data)}) 
-  },[])
-  console.log(users)
-  
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/profile/27193")
+      .then((res) => {
+        setUsers(res.data);
+      });
+  }, []);
+  const generateSubscribers = +Math.round(Math.random()*500)
   const routesPath = (
     <Routes>
       <Route path={"/*"} element={""} />

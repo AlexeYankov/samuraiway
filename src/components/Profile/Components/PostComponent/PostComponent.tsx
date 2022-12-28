@@ -1,22 +1,22 @@
+import { useSelector } from "react-redux";
+import { CRUDType } from "../../../../state/profileState/CRUDState";
+import { AppRootStateType } from "../../../../state/store";
 import s from "./PostComponent.module.css";
 import PostComponentFooter from "./PostComponentFooter";
 
 type NickType = {
   name: string;
   photo: string;
-  post: string;
-  pinned?: boolean;
+  post: CRUDType
   postSearch?: boolean;
   setA?: () => void;
   someVar?:boolean;
-  
-  
-
 };
 
-const PostComponent = ({ name, photo, post, pinned, postSearch, setA, someVar }: NickType) => {
+const PostComponent = ({ name, photo, post, postSearch, setA, someVar }: NickType) => {
   const someShowFn = () => console.log("Clicked");
-  const pinnedPostJSX = pinned ? (
+  const postsCount = useSelector<AppRootStateType, CRUDType>(state => state.posts)
+  const pinnedPostJSX = postsCount[0].pinn? (
     <span>
       <span className={s.posts__post__pinned}>post pinned</span>
       <svg
@@ -53,20 +53,20 @@ const PostComponent = ({ name, photo, post, pinned, postSearch, setA, someVar }:
   const logFn = () => {
     console.log(3)
   }
-  const someFn = someVar ? (
-    <ul
-      className={s.moreButton__Menu}
-    >
-      <li onClick={logFn}>sss</li>
-      <li onClick={logFn}>sss</li>
-      <li onClick={logFn}>sss</li>
-    </ul>
-  ) : (
-    ""
-  );
-  return (
-    <div className={s.posts__contaiter}>
-      {postsSearchJSX}
+  // const someFn = someVar ? (
+  //   <ul
+  //     className={s.moreButton__Menu}
+  //   >
+  //     <li onClick={logFn}>sss</li>
+  //     <li onClick={logFn}>sss</li>
+  //     <li onClick={logFn}>sss</li>
+  //   </ul>
+  // ) : (
+  //   ""
+  // );
+  const postsJSX = postsCount[0].text? 
+  <div className={s.posts__contaiter}>
+    {postsSearchJSX}
       <div className={s.posts__userPost}>
         <div className={s.posts__userPhoto}>
           <img src={photo} alt="" />
@@ -82,7 +82,7 @@ const PostComponent = ({ name, photo, post, pinned, postSearch, setA, someVar }:
             style={{ background: "none", border: "none" }}
             onClick={setA}
           >
-            {someFn}
+            {/* {someFn} */}
             <svg
               className={s.posts__user__moreButton}
               width={35}
@@ -96,11 +96,15 @@ const PostComponent = ({ name, photo, post, pinned, postSearch, setA, someVar }:
         </div>
       </div>
       <div className={s.posts__post}>
-        <span>{post}</span>
+        <span>{postsCount[0].text}</span>
       </div>
       <PostComponentFooter />
-    </div>
+  </div> : ''
+  return (<>
+      {postsJSX}
+      </>
   );
+
 };
 
 export default PostComponent;

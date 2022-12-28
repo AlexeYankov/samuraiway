@@ -17,38 +17,47 @@ import InfoComponent from "./Components/InfoComponent/InfoComponent";
 import CRUDComponent from "./Components/CRUDComponent/CRUDComponent";
 import PostComponent from "./Components/PostComponent/PostComponent";
 import TextAreaComponent from "./Components/CRUDComponent/TextAreaComponent";
+import { usersType } from "../../App";
+import { AppRootStateType } from "../../state/store";
+import { CRUDType } from "../../state/profileState/CRUDState";
+import { useSelector } from "react-redux";
+
+type ProfileType = {
+  data: usersType
+  subscribers: number
+}
 
 const ProfileContainer = () => {
   const [someVar, setA] = useState<boolean>(false);
   const [post, setPost] = useState<boolean>(false);
   const [shorts, setShorts] = useState<boolean>(false);
-  const pinned = 1;
+  const profileCount = useSelector<AppRootStateType, usersType>(state => state.profile)
+  const postsCount = useSelector<AppRootStateType, CRUDType>(state => state.posts)
   const postText = "fgfr";
   const openCloseMoreBtn = () => {
     setA(!someVar)
   }
-  const pinnedPost = pinned ? (
-    <PostComponent
-      name="John"
-      photo={AvatarIcon}
-      post={postText}
-      pinned={true}
-      setA={openCloseMoreBtn} 
-      someVar={someVar}
-    />
-  ) : (
-    <PostComponent
-      name="John"
-      photo={AvatarIcon}
-      post={postText}
-      postSearch={true}
-      setA={openCloseMoreBtn} 
-      someVar={someVar}
-    />
-  );
+  // const pinnedPost = pinned ? (
+  //   <PostComponent
+  //     name="John"
+  //     photo={AvatarIcon}
+  //     post={postText}
+  //     pinned={true}
+  //     setA={openCloseMoreBtn} 
+  //     someVar={someVar}
+  //   />
+  // ) : (
+  //   <PostComponent
+  //     name="John"
+  //     photo={AvatarIcon}
+  //     post={postText}
+  //     postSearch={true}
+  //     setA={openCloseMoreBtn} 
+  //     someVar={someVar}
+  //   />
+  // );
   const [value, someValue] = useState<string>("");
   const [valueShorts, someShorts] = useState<string>("");
-  console.log(value);
   const openPostFn = () => {
     setPost(!post);
     setShorts(false);
@@ -66,7 +75,7 @@ const ProfileContainer = () => {
     <article className={r.profileAppWrapper}>
       <section className={s.profileWrapper}>
         <article className={s.profileAvatar}>
-          <Avatar photo={AvatarIcon} />
+          <Avatar photo={profileCount.photos.large ? profileCount.photos.large : AvatarIcon} />
         </article>
 
         <article className={s.profileTexting}>
@@ -104,7 +113,7 @@ const ProfileContainer = () => {
                 </a>
 
                 <a className={s.profileSubscribers__count} href={""}>
-                  6743
+                  {profileCount.subscribers}
                 </a>
               </div>
 
@@ -200,8 +209,8 @@ const ProfileContainer = () => {
           ) : (
             ""
           )}
-          {pinnedPost}
-          <PostComponent name="John" photo={AvatarIcon} post={postText} setA={openCloseMoreBtn} someVar={someVar} />
+          {/* {pinnedPost} */}
+          <PostComponent name="John" photo={profileCount.photos.small ? profileCount.photos.small : AvatarIcon} post={postsCount} setA={openCloseMoreBtn} someVar={someVar} />
         </article>
 
         <article className={s.profileAside}></article>

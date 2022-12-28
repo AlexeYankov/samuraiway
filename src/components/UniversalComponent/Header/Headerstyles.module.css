@@ -20,12 +20,13 @@
 }
 
 .headerLogo {
+    border: 1px solid red;
     width: 100%;
     height: 100%;
     flex-wrap: wrap;
     grid-area: pic;
     display: flex;
-    margin-right: 85px;
+    /* margin-right: 85px; */
     justify-content: center;
     align-items: center;
 }
@@ -34,7 +35,7 @@
     display: flex;
     height: 100%;
     width: 100%;
-    margin-right: 125px;
+    margin-right: 20%;
     flex-wrap: wrap;
 }
 .headerLogoContainer1 {
@@ -100,6 +101,8 @@
 }
 
 .headerBudContainer {
+    border: 3px solid red;
+    /* margin-left: 60px; */
     width: 100%;
     height: 100%;
     display: flex;
@@ -180,17 +183,23 @@
 }
 
 .headerSearch {
+    border: 1px solid green;
     grid-area: ser;
     max-width: 100%;
-    width: 225px;
-    justify-content: start;
+    min-width: 225px;
+    width: 100%;
+    justify-content: center;
     align-items: center;
     display: flex;
-    /*margin-left: 35px;*/
+    /* padding: 0px 30px; */
+    /* margin: 0px 15px; */
+    /* padding: 0px 30px; */
 }
 
 .headerSearchContainer {
-    /*padding-left: 20px;*/
+    /* padding-left: 30px; */
+    
+    min-width: 225px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -204,7 +213,6 @@
     border: none;
     border-radius: 12px;
     background: #ECECEC;
-    /*opacity: 0.4;*/
     height: 50px;
     width: 90%;
     font-size: 24px;
@@ -254,6 +262,7 @@
 }
 
 .headerLogOutBlack {
+    border: 5px solid black;
     flex-wrap: wrap;
     grid-area: out;
     display: flex;
@@ -323,9 +332,9 @@
     .headerLogOut span {
         margin-right: 10px;
     }
-    /*.headerSearch input {*/
-    /*    font-size: 20px;*/
-    /*}*/
+    .headerSearch input {
+        font-size: 20px;
+    }
 
     .headerBudLanguageControl {
         display: none;
@@ -334,7 +343,7 @@
     .headerBudThemeControl {
         margin: 0px 50px 0px 0px;
     }
-}
+} 
 
 @media screen and (max-width: 1100px) {
     .headerSearch {
@@ -359,17 +368,17 @@
     }
     .headerLogoContainer {
         margin: 0px 70px 0px 0px;
-        /*transform: scale(0.8);*/
+        transform: scale(0.8);
     }
     .headerLogoContainer1 {
         padding: 0px 70px 0px 0px;
-    }
+    } 
     .headerBudContainer {
         justify-content: flex-end;
         align-items: center;
         transform: scale(0.9);
     }
-}
+} 
 
 @media screen and (max-width: 900px) {
     .headerSearch {
@@ -382,12 +391,12 @@
         margin-right: 10px;
     }
     .headerLogo {
-        transform: scale(0.9);
-        /* margin-left: -20px; */
+        transform: scale(0.9); 
+        margin-left: -20px;
     }
-    /*.headerBudBlack {*/
-    /*    background-color: #3d4650;*/
-    /*}*/
+    .headerBudBlack {
+        background-color: #3d4650;
+    }
     .headerBudContainer {
         justify-content: flex-start;
         align-items: center;
@@ -403,7 +412,7 @@
         width: 100px;
 
     }
-    .headerLogOutBlack {
+     .headerLogOutBlack {
         font-size: 12px;
         margin-left: -20px;
         justify-content: center;
@@ -413,4 +422,3 @@
     }
 
 }
-

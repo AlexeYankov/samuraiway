@@ -1,6 +1,9 @@
 import s from "../../Profilestyles.module.css";
 import SomeSVGComponent from "../../../UniversalComponent/SVGComponent/SomeSVGComponent";
 import React, { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import profileReducer from "../../../../state/profileState/ProfileState";
+import { addPostReducer } from "../../../../state/profileState/CRUDState";
 
 type TextAreaType = {
   accept: string;
@@ -21,7 +24,7 @@ const TextAreaComponent: React.FC<TextAreaType> = ({
   const textValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.currentTarget.value);
   };
-
+  const dispatch = useDispatch()
   const handlerChanged = (e: ChangeEvent<HTMLInputElement>) => {
     uploadFiles(e.target.files);
   };
@@ -91,11 +94,16 @@ const TextAreaComponent: React.FC<TextAreaType> = ({
       </label>
     </div>
   );
+  const time = '2'
+  const img = '2'
+  const music = '2'
+  const video = '2'
   return (
     <div className={s.profileInfo__CRUDarea}>
       <textarea className="" onChange={textValue} value={value}></textarea>
       <div className={s.profileInfo__CRUDarea__buttons}>
-        <button className={s.profileInfo__CRUDarea__send}>
+        <button className={s.profileInfo__CRUDarea__send} 
+        onClick={()=> dispatch(addPostReducer(time, value, img, music, video))}>
           <SomeSVGComponent propsPath="M429.6 92.1c4.9-11.9 2.1-25.6-7-34.7s-22.8-11.9-34.7-7l-352 144c-14.2 5.8-22.2 20.8-19.3 35.8s16.1 25.8 31.4 25.8H224V432c0 15.3 10.8 28.4 25.8 31.4s30-5.1 35.8-19.3l144-352z" />
         </button>
         <div className={s.profileInfo__CRUDarea__content}>{shortsJSX}</div>
