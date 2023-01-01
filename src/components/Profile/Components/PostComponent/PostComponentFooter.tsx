@@ -1,5 +1,5 @@
 import s from "../PostComponent/PostComponent.module.css";
-import PostsFooterParts from "../../../../state/PostsFooterParts";
+import PostsFooterParts from "../../../../state/PostComponent/PostsFooterParts";
 import SomeSVGComponent from "../../../UniversalComponent/SVGComponent/SomeSVGComponent";
 
 const PostComponentFooter = () => {

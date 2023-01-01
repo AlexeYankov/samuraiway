@@ -1,5 +1,5 @@
 import UniversalButton from "../UniversalComponent/Buttons/UniversalButton";
-import Avatar from "./Components/Avatar";
+import Avatar from "./Components/AvatarComponent/Avatar";
 import { ReactComponent as InviteSVG } from "../../pics/Buttons/square-plus-solidGray.svg";
 import { useState } from "react";
 import AdverstingIMG from "../../pics/adversting/Nestle.png";
@@ -17,21 +17,24 @@ import InfoComponent from "./Components/InfoComponent/InfoComponent";
 import CRUDComponent from "./Components/CRUDComponent/CRUDComponent";
 import PostComponent from "./Components/PostComponent/PostComponent";
 import TextAreaComponent from "./Components/CRUDComponent/TextAreaComponent";
-import { usersType } from "../../App";
+import { ProfileType, SubscribersType } from "../../App";
 import { AppRootStateType } from "../../state/store";
 import { CRUDType } from "../../state/profileState/CRUDState";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import SubscribersContainer from "./Components/SubscribersContainer/SubscribersContainer";
 
-type ProfileType = {
-  data: usersType
-  subscribers: number
+type ProfileContainerType = {
+  data: ProfileType
+  subs: number
+  randomPageUseEffect?:number
+  users: SubscribersType[]
 }
 
-const ProfileContainer = () => {
+const ProfileContainer = ({data, subs,randomPageUseEffect, users}:ProfileContainerType) => {
   const [someVar, setA] = useState<boolean>(false);
   const [post, setPost] = useState<boolean>(false);
   const [shorts, setShorts] = useState<boolean>(false);
-  const profileCount = useSelector<AppRootStateType, usersType>(state => state.profile)
   const postsCount = useSelector<AppRootStateType, CRUDType>(state => state.posts)
   const postText = "fgfr";
   const openCloseMoreBtn = () => {
@@ -75,7 +78,7 @@ const ProfileContainer = () => {
     <article className={r.profileAppWrapper}>
       <section className={s.profileWrapper}>
         <article className={s.profileAvatar}>
-          <Avatar photo={profileCount.photos.large ? profileCount.photos.large : AvatarIcon} />
+          <Avatar photo={data.photos.large ? data.photos.large : AvatarIcon} />
         </article>
 
         <article className={s.profileTexting}>
@@ -106,71 +109,7 @@ const ProfileContainer = () => {
               <span>send to black list</span>
             </UniversalButton>
 
-            <div className={s.profileSubscribers__container}>
-              <div className={s.profileSubscribers__buttons}>
-                <a className={s.profileSubscribers__count} href={""}>
-                  Subscribers
-                </a>
-
-                <a className={s.profileSubscribers__count} href={""}>
-                  {profileCount.subscribers}
-                </a>
-              </div>
-
-              <div className={s.profileSubscribers__showingList_top}>
-                <a className={s.profileSubscribers__listContainer} href="">
-                  <img
-                    className={s.profileSubscribers__AvaMin}
-                    src={img}
-                    alt="Photo"
-                  />
-                  <span>Iren</span>
-                </a>
-                <a className={s.profileSubscribers__listContainer} href="">
-                  <img
-                    className={s.profileSubscribers__AvaMin}
-                    src={img1}
-                    alt="Photo1"
-                  />
-                  <span>Alex</span>
-                </a>
-                <a className={s.profileSubscribers__listContainer} href="">
-                  <img
-                    className={s.profileSubscribers__AvaMin}
-                    src={img2}
-                    alt="Photo2"
-                  />
-                  <span>Fred</span>
-                </a>
-              </div>
-
-              <div className={s.profileSubscribers__showingList_top}>
-                <a className={s.profileSubscribers__listContainer} href={""}>
-                  <img
-                    className={s.profileSubscribers__AvaMin}
-                    src={img3}
-                    alt="Photo3"
-                  />
-                  <span>Star</span>
-                </a>
-                <a className={s.profileSubscribers__listContainer} href="">
-                  <img
-                    className={s.profileSubscribers__AvaMin}
-                    src={img4}
-                    alt="Photo4"
-                  />
-                  <span>Nansy</span>
-                </a>
-                <a className={s.profileSubscribers__listContainer} href="">
-                  <img
-                    className={s.profileSubscribers__AvaMin}
-                    src={img5}
-                    alt="Photo5"
-                  />
-                  <span>Susy</span>
-                </a>
-              </div>
-            </div>
+            <SubscribersContainer subscribers={users} subscribersTotal={subs}/>
             <div className={s.profileAdversting}>
               <a href="">
                 <img src={AdverstingIMG} alt="" />
@@ -180,7 +119,7 @@ const ProfileContainer = () => {
         </article>
 
         <article className={s.profileInfo}>
-          <InfoComponent />
+          <InfoComponent subscribersTotal={subs} />
         </article>
 
         <article className={s.profileInfo__posts}>
@@ -210,7 +149,7 @@ const ProfileContainer = () => {
             ""
           )}
           {/* {pinnedPost} */}
-          <PostComponent name="John" photo={profileCount.photos.small ? profileCount.photos.small : AvatarIcon} post={postsCount} setA={openCloseMoreBtn} someVar={someVar} />
+          <PostComponent name="John" photo={data.photos.small ? data.photos.small : AvatarIcon} post={postsCount} setA={openCloseMoreBtn} someVar={someVar} />
         </article>
 
         <article className={s.profileAside}></article>

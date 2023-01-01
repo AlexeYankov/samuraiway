@@ -1,6 +1,6 @@
-import {usersType} from '../../App'
+import {ProfileType} from '../../App'
 
-let initialState: usersType = {
+let initialState: ProfileType = {
     aboutMe: '',
     contacts: {
         github: '',
@@ -23,7 +23,7 @@ let initialState: usersType = {
     subscribers: 0
 }
 
-const profileReducer = (state = initialState, action: reducerType) :usersType => {
+const profileReducer = (state = initialState, action: reducerType) :ProfileType => {
     switch (action.type) {
         case "ADD-POST": {
             return state

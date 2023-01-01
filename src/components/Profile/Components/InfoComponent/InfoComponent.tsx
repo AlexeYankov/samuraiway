@@ -1,6 +1,11 @@
+import { NavLink } from "react-router-dom";
 import s from "./InfoComponent.module.css";
 
-const InfoComponent = () => {
+type InfoComponentType = {
+  subscribersTotal: number
+}
+
+const InfoComponent = ({subscribersTotal}:InfoComponentType) => {
   const getUserUrl = "Anthony" + "_" + "Soprano";
   return (
     <div className={s.info__container}>
@@ -52,10 +57,10 @@ const InfoComponent = () => {
       </div>
       <div className={s.info__footer}>
         <div className={s.info__footer__container}>
-          <a className={s.info__footer__unit} href="">
-            <span className={s.info__footer__unit__number}>163</span>
+          <NavLink className={s.info__footer__unit} to="/subscribers">
+            <span className={s.info__footer__unit__number}>{subscribersTotal}</span>
             <span className={s.info__footer__unit__text}>subscribers</span>
-          </a>
+          </NavLink>
           <a className={s.info__footer__unit} href="">
             <span className={s.info__footer__unit__number}>488</span>
             <span className={s.info__footer__unit__text}>posts</span>

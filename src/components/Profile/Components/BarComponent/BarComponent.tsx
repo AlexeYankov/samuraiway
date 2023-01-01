@@ -3,7 +3,7 @@ import s from "../../../../App.module.css";
 import f from "./BarComponent.module.css";
 import BarButtons from "./BarButtons";
 
-import NavListTags from "../../../../state/BarState";
+import NavListTags from "../../../../state/BarContent/BarState";
 
 const BarComponent = () => {
   const GenericBar = NavListTags.map((el) => {

@@ -157,17 +157,21 @@
 
 .profileSubscribers__listContainer {
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
+    width: 33.3%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+    padding-top: 10px;
 }
 
 .profileSubscribers__showingList_top {
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    padding-top: 25px;
+    flex-wrap: wrap;
+    width: 95%;
+    padding-left: 3%;
+    justify-content: flex-start;
+    padding-top: 15px;
 
 }
 

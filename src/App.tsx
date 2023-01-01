@@ -11,12 +11,17 @@ import Shorts from "../src/components/Profile/Shorts/Shorts";
 import Header from "./components/UniversalComponent/Header/Header";
 import BarComponent from "./components/Profile/Components/BarComponent/BarComponent";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { CRUDType } from "./state/profileState/CRUDState";
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "./state/store";
+import Subscribers from "./components/Profile/Subscribers/Subscribers";
+import { setSubscribersReducer } from "./state/profileState/SubscribersState";
+import { authMe, getProfile, getUsers } from "./dataAccessLayer/ApiSN";
+import ContentStateFn from "./state/PostComponent/PostsContentState";
 
-export type usersType = {
+// export type usersType = {};
+
+export type ProfileType = {
   aboutMe: string;
   contacts: {
     github: string;
@@ -36,25 +41,87 @@ export type usersType = {
     large: string;
     small: string;
   };
-  subscribers:number
+  subscribers: number;
+  posts?: CRUDType;
+};
+
+export type SubscribersType = {
+  id: number;
+  name: string;
+  status?: string;
+  photos: {
+    small: string;
+    large: string;
+  };
+  followed: boolean;
+  page: number;
 };
 
 function App() {
-  const [users, setUsers] = useState<usersType>();
-  const postsCount = useSelector<AppRootStateType, usersType>(state => state.profile)
+  const [profile, setProfile] = useState<ProfileType>();
+  const [users, setUsers] = useState<SubscribersType[]>();
+  const [subs, setSubs] = useState<number>(1);
+  const [userData, setUserData] = useState();
+  const setProfileData = useSelector<AppRootStateType, ProfileType>(
+    (state) => state.profile
+  );
+  const setUsersData = useSelector<AppRootStateType, SubscribersType[]>(
+    (state) => state.subscribers
+  );
+  const dispatch = useDispatch();
+  let randomPageUseEffect = 1;
   useEffect(() => {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/profile/27193")
-      .then((res) => {
-        setUsers(res.data);
-      });
+    setSubs(+Math.round(Math.random() * 500));
+    const randomPage = +Math.round(Math.random() * 20);
+    let userID = 0;
+    let initIDvalue = userID ? userID : 27145;
+    randomPageUseEffect = randomPage ? randomPage : 1;
+    authMe().then((res) => {
+      userID = res.data.data.id;
+      setUserData(res.data.data);
+    });
+
+    getProfile(initIDvalue).then((res) => {
+      setProfile(res.data);
+    });
+
+    getUsers(randomPageUseEffect).then((res) => {
+      let dataForRender = res.data.items;
+      dataForRender.page = randomPageUseEffect;
+      setUsers(dataForRender);
+      dispatch(setSubscribersReducer(dataForRender));
+    });
+    console.log(initIDvalue);
   }, []);
-  const generateSubscribers = +Math.round(Math.random()*500)
+  const posts1 = ContentStateFn();
+  console.log(posts1);
+  console.log(users);
+  console.log(userData);
   const routesPath = (
     <Routes>
       <Route path={"/*"} element={""} />
-      <Route path={"/"} element={<ProfileContainer />} />
-      <Route path={"/profile"} element={<ProfileContainer />} />
+      <Route
+        path={"/"}
+        element={
+          <ProfileContainer
+            data={setProfileData}
+            subs={subs}
+            randomPageUseEffect={randomPageUseEffect}
+            users={setUsersData}
+          />
+        }
+      />
+      <Route
+        path={"/profile"}
+        element={
+          <ProfileContainer
+            data={setProfileData}
+            subs={subs}
+            randomPageUseEffect={randomPageUseEffect}
+            users={setUsersData}
+          />
+        }
+      />
       <Route path={"/messages"} element={<Messages />} />
       <Route path={"/music"} element={<Music />} />
       <Route path={"/video"} element={<Video />} />
@@ -62,6 +129,16 @@ function App() {
       <Route path={"/games"} element={<Games />} />
       <Route path={"/settings"} element={<Settings />} />
       <Route path={"/shorts"} element={<Shorts />} />
+      <Route
+        path={"/subscribers"}
+        element={
+          <Subscribers
+            subscribers={setUsersData}
+            subs={subs}
+            randomPageUseEffect={randomPageUseEffect}
+          />
+        }
+      />
     </Routes>
   );
 

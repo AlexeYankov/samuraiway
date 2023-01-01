@@ -1,5 +1,4 @@
-import React from 'react';
-import s from '../Profilestyles.module.css'
+import s from '../../Profilestyles.module.css'
 
 type AvatarType = {
     photo: string
