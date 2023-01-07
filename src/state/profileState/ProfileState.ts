@@ -20,7 +20,7 @@ let initialState: ProfileType = {
         large: '',
         small: ''
     },
-    subscribers: 0
+    subscribers: 0,
 }
 
 const profileReducer = (state = initialState, action: reducerType) :ProfileType => {

@@ -1,27 +1,17 @@
 
 export type CRUDType = [
   {
-    time: string,
-    text: string,
-    img: string,
-    music: string,
-    video: string,
-    status: { likes: number; comments: number; reposts: number; views: number },
-    pinn: boolean,
+    time?: string,
+    text?: string,
+    img?: string,
+    music?: string,
+    video?: string,
+    status?: { likes?: number; comments?: number; reposts?: number; views?: number },
+    pinn?: boolean,
   }
 ];
 
-let initialState: CRUDType = [
-  {
-    time: "",
-    text: "",
-    img: "string",
-    music: "string",
-    video: "string",
-    status: { likes: 3, comments: 2, reposts: 9, views: 5 },
-    pinn: false,
-  }
-];
+let initialState: CRUDType[] = [];
 
 const crudReducer = (state = initialState, action: reducerType) => {
   switch (action.type) {
@@ -46,6 +36,9 @@ const crudReducer = (state = initialState, action: reducerType) => {
           img: action.payload.img,
         },
       ];
+    }
+    case "INITIAL-POSTS": {
+      return [...action.payload.posts]
     }
     case "ADD-MUSIC": {
       return [
@@ -72,7 +65,8 @@ type reducerType =
   | addPostType
   | addPostImgType
   | addPostMusicType
-  | addPostVideoType;
+  | addPostVideoType
+  | setInitialPostsType;
 
 type addPostType = ReturnType<typeof addPostReducer>;
 export const addPostReducer = (
@@ -100,6 +94,15 @@ export const addPostImgReducer = (img: string) => {
     type: "ADD-IMG",
     payload: {
       img,
+    },
+  } as const;
+};
+type setInitialPostsType = ReturnType<typeof setInitialPostsReducer>;
+export const setInitialPostsReducer = (posts: CRUDType) => {
+  return {
+    type: "INITIAL-POSTS",
+    payload: {
+      posts,
     },
   } as const;
 };

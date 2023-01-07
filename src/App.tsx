@@ -17,9 +17,7 @@ import { AppRootStateType } from "./state/store";
 import Subscribers from "./components/Profile/Subscribers/Subscribers";
 import { setSubscribersReducer } from "./state/profileState/SubscribersState";
 import { authMe, getProfile, getUsers } from "./dataAccessLayer/ApiSN";
-import ContentStateFn from "./state/PostComponent/PostsContentState";
-
-// export type usersType = {};
+import ContentStateFn, { PostType } from "./state/PostComponent/PostsContentState";
 
 export type ProfileType = {
   aboutMe: string;
@@ -55,13 +53,15 @@ export type SubscribersType = {
   };
   followed: boolean;
   page: number;
+  fetching?:boolean
 };
 
 function App() {
   const [profile, setProfile] = useState<ProfileType>();
-  const [users, setUsers] = useState<SubscribersType[]>();
   const [subs, setSubs] = useState<number>(1);
-  const [userData, setUserData] = useState();
+  const [page, getPage] = useState<number>(1);
+  const [posts, setPosts] = useState<PostType[]>();
+  // const [userData, setUserData] = useState();
   const setProfileData = useSelector<AppRootStateType, ProfileType>(
     (state) => state.profile
   );
@@ -76,27 +76,26 @@ function App() {
     let userID = 0;
     let initIDvalue = userID ? userID : 27145;
     randomPageUseEffect = randomPage ? randomPage : 1;
+    getPage(randomPage)
     authMe().then((res) => {
       userID = res.data.data.id;
-      setUserData(res.data.data);
     });
 
     getProfile(initIDvalue).then((res) => {
+      res.data.page = randomPageUseEffect
       setProfile(res.data);
     });
 
     getUsers(randomPageUseEffect).then((res) => {
       let dataForRender = res.data.items;
       dataForRender.page = randomPageUseEffect;
-      setUsers(dataForRender);
       dispatch(setSubscribersReducer(dataForRender));
     });
-    console.log(initIDvalue);
+    
+    const posts1 = ContentStateFn();
+    setPosts(posts1)
   }, []);
-  const posts1 = ContentStateFn();
-  console.log(posts1);
-  console.log(users);
-  console.log(userData);
+  console.log(posts);
   const routesPath = (
     <Routes>
       <Route path={"/*"} element={""} />
@@ -106,7 +105,7 @@ function App() {
           <ProfileContainer
             data={setProfileData}
             subs={subs}
-            randomPageUseEffect={randomPageUseEffect}
+            randomPageUseEffect={page}
             users={setUsersData}
           />
         }
@@ -117,7 +116,7 @@ function App() {
           <ProfileContainer
             data={setProfileData}
             subs={subs}
-            randomPageUseEffect={randomPageUseEffect}
+            randomPageUseEffect={page}
             users={setUsersData}
           />
         }
@@ -135,7 +134,7 @@ function App() {
           <Subscribers
             subscribers={setUsersData}
             subs={subs}
-            randomPageUseEffect={randomPageUseEffect}
+            randomPageUseEffect={page}
           />
         }
       />

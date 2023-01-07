@@ -4,15 +4,12 @@ import ThemeControl from './ThemeControl';
 import s from './Headerstyles.module.css'
 import logo from '../../../pics/IconFavicon/pic1.png'
 import search from '../../../pics/PostsIcons/magnifying-glass-solid.svg'
+import { NavLink } from 'react-router-dom';
 
 
 const Header = () => {
     const [guest, setGuest] = useState<Boolean>(false)
     const [color, setColor] = useState<string>('White')
-
-    const aCallBack = () => {
-        console.log('a called')
-    }
     const colorCallBack = color === 'White' ? s.headerWrapper : s.headerWrapperBlack
     const colorChecker = (color: string) => {
         setColor(color)
@@ -26,7 +23,7 @@ const Header = () => {
             <article className={s.headerLogo}>
                 <article className={s.headerLogoContainer}>
                     <label className={s.headerLogoContainer1}>
-                        <a className={s.headerLogoImg} onClick={aCallBack}>
+                        <NavLink className={s.headerLogoImg} to={"/profile"}>
                             <div className={s.headerLogoBudContainer}>
                                 <img src={logo} alt="buddy"/>
                                 <span className={s.headerLogoBud}>
@@ -37,7 +34,7 @@ const Header = () => {
                                         dy
                                 </span>
                             </div>
-                        </a>
+                        </NavLink>
                     </label>
                 </article>
             </article>

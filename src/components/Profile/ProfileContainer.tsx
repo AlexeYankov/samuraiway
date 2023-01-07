@@ -149,7 +149,7 @@ const ProfileContainer = ({data, subs,randomPageUseEffect, users}:ProfileContain
             ""
           )}
           {/* {pinnedPost} */}
-          <PostComponent name="John" photo={data.photos.small ? data.photos.small : AvatarIcon} post={postsCount} setA={openCloseMoreBtn} someVar={someVar} />
+          <PostComponent name={data.fullName} photo={data.photos.large ? data.photos.large : AvatarIcon} post={postsCount} setA={openCloseMoreBtn} />
         </article>
 
         <article className={s.profileAside}></article>
