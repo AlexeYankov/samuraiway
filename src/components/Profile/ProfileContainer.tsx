@@ -37,6 +37,7 @@ const ProfileContainer = ({data, subs,randomPageUseEffect, users}:ProfileContain
   const [shorts, setShorts] = useState<boolean>(false);
   const postsCount = useSelector<AppRootStateType, CRUDType>(state => state.posts)
   const postText = "fgfr";
+  console.log(data)
   const openCloseMoreBtn = () => {
     setA(!someVar)
   }

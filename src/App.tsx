@@ -79,6 +79,7 @@ function App() {
     getPage(randomPage)
     authMe().then((res) => {
       userID = res.data.data.id;
+      console.log(res.data.data.id)
     });
 
     getProfile(initIDvalue).then((res) => {
@@ -95,7 +96,6 @@ function App() {
     const posts1 = ContentStateFn();
     setPosts(posts1)
   }, []);
-  console.log(posts);
   const routesPath = (
     <Routes>
       <Route path={"/*"} element={""} />
@@ -111,7 +111,7 @@ function App() {
         }
       />
       <Route
-        path={"/profile"}
+        path={"/profile/:userID"}
         element={
           <ProfileContainer
             data={setProfileData}
