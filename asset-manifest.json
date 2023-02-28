@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/samuraiway/static/css/main.bd33a56a.css",
+    "main.js": "/samuraiway/static/js/main.d27ab284.js",
+    "static/js/787.ecd58ae0.chunk.js": "/samuraiway/static/js/787.ecd58ae0.chunk.js",
+    "static/media/Iren.jpg": "/samuraiway/static/media/Iren.d07c4c9ae3a0a2037508.jpg",
+    "static/media/pic1.png": "/samuraiway/static/media/pic1.57b5a1acf1885fcfdcc2.png",
+    "static/media/Nestle.png": "/samuraiway/static/media/Nestle.ba1772e32cd666f0127b.png",
+    "static/media/Tony_Soprano_Portrait.jpg": "/samuraiway/static/media/Tony_Soprano_Portrait.c030f9f79b6f48836487.jpg",
+    "static/media/sun-regular.svg": "/samuraiway/static/media/sun-regular.4f748cc119854d5fb49212a2825dcb2c.svg",
+    "static/media/film-solid.svg": "/samuraiway/static/media/film-solid.2780be90da879cc2c85b43560a42a11b.svg",
+    "static/media/sliders-solid.svg": "/samuraiway/static/media/sliders-solid.07ae27e3ddea18a8ba095d05c062b165.svg",
+    "static/media/users-solid.svg": "/samuraiway/static/media/users-solid.13cbe715bf89e7f1b95b39d3d249e6ba.svg",
+    "static/media/address-card-solid.svg": "/samuraiway/static/media/address-card-solid.a5384ff43e35bd09542fb0f42c4a1440.svg",
+    "index.html": "/samuraiway/index.html",
+    "static/media/gamepad-solid.svg": "/samuraiway/static/media/gamepad-solid.72ad44c108a3e428aab76089ef2604cd.svg",
+    "static/media/comment-solid.svg": "/samuraiway/static/media/comment-solid.0b8ff01606be62e667d1d73ce75c0801.svg",
+    "static/media/headphones-solid.svg": "/samuraiway/static/media/headphones-solid.f615d07b8f2d36fbb0310cd4260c6c7d.svg",
+    "static/media/square-plus-solidGray.svg": "/samuraiway/static/media/square-plus-solidGray.892e0560e470cf29773b209ca17794c2.svg",
+    "static/media/moon-solid.svg": "/samuraiway/static/media/moon-solid.68dc79c7c3131ec78138ff423a60d2a0.svg",
+    "static/media/magnifying-glass-solid.svg": "/samuraiway/static/media/magnifying-glass-solid.cf315284d6e0edc1c7686864aa6da0bc.svg",
+    "static/media/video-solid.svg": "/samuraiway/static/media/video-solid.939d580b3f5b78730f626d147330b1fd.svg",
+    "main.bd33a56a.css.map": "/samuraiway/static/css/main.bd33a56a.css.map",
+    "main.d27ab284.js.map": "/samuraiway/static/js/main.d27ab284.js.map",
+    "787.ecd58ae0.chunk.js.map": "/samuraiway/static/js/787.ecd58ae0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd33a56a.css",
+    "static/js/main.d27ab284.js"
+  ]
+}
