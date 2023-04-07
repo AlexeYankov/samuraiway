@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/samuraiway/static/css/main.bd33a56a.css",
-    "main.js": "/samuraiway/static/js/main.d27ab284.js",
+    "main.js": "/samuraiway/static/js/main.90856cca.js",
     "static/js/787.ecd58ae0.chunk.js": "/samuraiway/static/js/787.ecd58ae0.chunk.js",
     "static/media/Iren.jpg": "/samuraiway/static/media/Iren.d07c4c9ae3a0a2037508.jpg",
     "static/media/pic1.png": "/samuraiway/static/media/pic1.57b5a1acf1885fcfdcc2.png",
@@ -21,11 +21,11 @@
     "static/media/magnifying-glass-solid.svg": "/samuraiway/static/media/magnifying-glass-solid.cf315284d6e0edc1c7686864aa6da0bc.svg",
     "static/media/video-solid.svg": "/samuraiway/static/media/video-solid.939d580b3f5b78730f626d147330b1fd.svg",
     "main.bd33a56a.css.map": "/samuraiway/static/css/main.bd33a56a.css.map",
-    "main.d27ab284.js.map": "/samuraiway/static/js/main.d27ab284.js.map",
+    "main.90856cca.js.map": "/samuraiway/static/js/main.90856cca.js.map",
     "787.ecd58ae0.chunk.js.map": "/samuraiway/static/js/787.ecd58ae0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd33a56a.css",
-    "static/js/main.d27ab284.js"
+    "static/js/main.90856cca.js"
   ]
 }
