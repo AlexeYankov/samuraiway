@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { CRUDType } from "../../../../state/profileState/CRUDState";
+import { CRUDType } from "../../../../state/profileState/CRUDStateReducer";
 import { AppRootStateType } from "../../../../state/store";
 import s from "./PostComponent.module.css";
 import PostComponentFooter from "./PostComponentFooter";
@@ -7,12 +7,12 @@ import PostComponentFooter from "./PostComponentFooter";
 type NickType = {
   name: string;
   photo: string;
-  post: CRUDType
+  post: CRUDType;
   postSearch?: boolean;
   setA?: () => void;
 };
 
-const PostComponent = ({ name, photo, post, postSearch, setA}: NickType) => {
+const PostComponent = ({ name, photo, post, postSearch, setA }: NickType) => {
   // const someShowFn = () => console.log("Clicked");
   // const postsCount = useSelector<AppRootStateType, CRUDType>(state => state.posts)
   // const pinnedPostJSX = postsCount[0].pinn ? (
@@ -48,7 +48,7 @@ const PostComponent = ({ name, photo, post, postSearch, setA}: NickType) => {
   // ) : (
   //   ""
   // );
-  
+
   // const logFn = () => {
   //   console.log(3)
   // }
@@ -63,7 +63,7 @@ const PostComponent = ({ name, photo, post, postSearch, setA}: NickType) => {
   // ) : (
   //   ""
   // );
-  // const postsJSX = postsCount[0].text? 
+  // const postsJSX = postsCount[0].text?
   // <div className={s.posts__contaiter}>
   //   {postsSearchJSX}
   //     <div className={s.posts__userPost}>
@@ -99,11 +99,7 @@ const PostComponent = ({ name, photo, post, postSearch, setA}: NickType) => {
   //     </div>
   //     <PostComponentFooter />
   // </div> : ''
-  return (<>
-      {/* {postsJSX} */}
-      </>
-  );
-
+  return <>{/* {postsJSX} */}</>;
 };
 
 export default PostComponent;

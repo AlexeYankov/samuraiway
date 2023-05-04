@@ -1,23 +1,18 @@
-import s from './SomeSVG.module.css'
+import s from "./SomeSVG.module.css";
 
 type SVGType = {
-   
-    propsPath: string,
-    fill?:string
-    
-}
+  propsPath: string;
+  fill?: string;
+  click?: () => void;
+  width?: number;
+};
 
-const SomeSVGComponent = (a: SVGType) => {
-  const finalFill = a.fill ? a.fill : "gray"
+const SomeSVGComponent = ({ propsPath, fill, click, width = 20 }: SVGType) => {
+  const finalFill = fill ? fill : "gray";
   return (
-      <svg
-        className={s.container}
-        fill={finalFill}
-        width={20}
-        viewBox="0 0 512 512"
-      >
-        <path d={a.propsPath} />
-      </svg>
+    <svg className={s.container} fill={finalFill} width={width} viewBox="0 0 512 512" onClick={click}>
+      <path d={propsPath} />
+    </svg>
   );
 };
 

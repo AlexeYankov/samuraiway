@@ -1,157 +1,69 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import s from "./App.module.css";
-import Messages from "./components/Profile/Messages/Messages";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import Music from "../src/components/Profile/Music/Music";
-import Video from "../src/components/Profile/Video/Video";
-import Groups from "../src/components/Profile/Groups/Groups";
-import Games from "../src/components/Profile/Games/Games";
-import Settings from "../src/components/Profile/Settings/Settings";
-import Shorts from "../src/components/Profile/Shorts/Shorts";
 import Header from "./components/UniversalComponent/Header/Header";
-import BarComponent from "./components/Profile/Components/BarComponent/BarComponent";
 import { useEffect, useState } from "react";
-import { CRUDType } from "./state/profileState/CRUDState";
-import { useDispatch, useSelector } from "react-redux";
-import { AppRootStateType } from "./state/store";
-import Subscribers from "./components/Profile/Subscribers/Subscribers";
-import { setSubscribersReducer } from "./state/profileState/SubscribersState";
-import { authMe, getProfile, getUsers } from "./dataAccessLayer/ApiSN";
-import ContentStateFn, { PostType } from "./state/PostComponent/PostsContentState";
-
-export type ProfileType = {
-  aboutMe: string;
-  contacts: {
-    github: string;
-    vk: string;
-    facebook: string;
-    instagram: string;
-    twitter: string;
-    website: string;
-    youtube: string;
-    mainLink: string;
-  };
-  fullName: string;
-  lookingForAJob: boolean;
-  lookingForAJobDescription: string;
-  userID: number;
-  photos: {
-    large: string;
-    small: string;
-  };
-  subscribers: number;
-  posts?: CRUDType;
-};
-
-export type SubscribersType = {
-  id: number;
-  name: string;
-  status?: string;
-  photos: {
-    small: string;
-    large: string;
-  };
-  followed: boolean;
-  page: number;
-  fetching?:boolean
-};
+import { getUsersTC } from "./state/profileState/SubscribersState";
+import ContentStateFn, { PostType } from "./state/postComponent/postsContentState";
+import { RoutesComponent } from "./components/Routes/RoutesComponent";
+import { authMeTC } from "./state/login/loginReducer";
+import { useAppDispatch, useAppSelector } from "./state/store";
+import { authSelector, errorSelector, statusSelector, themeSelector } from "./selectors/AppSelector";
+import loader from "./pics/loaders/clock.svg";
+import { isAppTheme } from "./state/appState/appReducer";
+import { userIDSelector } from "./selectors/AuthSelector";
+import { setProfileData, setUsersData } from "./selectors/ProfileSelectors";
+let randomPageUseEffect;
 
 function App() {
-  const [profile, setProfile] = useState<ProfileType>();
-  const [subs, setSubs] = useState<number>(1);
-  const [page, getPage] = useState<number>(1);
-  const [posts, setPosts] = useState<PostType[]>();
-  // const [userData, setUserData] = useState();
-  const setProfileData = useSelector<AppRootStateType, ProfileType>(
-    (state) => state.profile
-  );
-  const setUsersData = useSelector<AppRootStateType, SubscribersType[]>(
-    (state) => state.subscribers
-  );
-  const dispatch = useDispatch();
-  let randomPageUseEffect = 1;
+  const profileDataSelector = useAppSelector(setProfileData);
+  const usersData = useAppSelector(setUsersData);
+  const status = useAppSelector(statusSelector);
+  const auth = useAppSelector(authSelector);
+  const theme = useAppSelector(themeSelector);
+  const appError = useAppSelector(errorSelector);
+  const userID = useAppSelector(userIDSelector);
+
+  const [subs, setSubs] = useState(1);
+  const [page, setPage] = useState(1);
+  const [posts, setPosts] = useState({} as PostType[]);
+
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    setSubs(+Math.round(Math.random() * 500));
-    const randomPage = +Math.round(Math.random() * 20);
-    let userID = 0;
-    let initIDvalue = userID ? userID : 27145;
-    randomPageUseEffect = randomPage ? randomPage : 1;
-    getPage(randomPage)
-    authMe().then((res) => {
-      userID = res.data.data.id;
-      console.log(res.data.data.id)
-    });
-
-    getProfile(initIDvalue).then((res) => {
-      res.data.page = randomPageUseEffect
-      setProfile(res.data);
-    });
-
-    getUsers(randomPageUseEffect).then((res) => {
-      let dataForRender = res.data.items;
-      dataForRender.page = randomPageUseEffect;
-      dispatch(setSubscribersReducer(dataForRender));
-    });
-    
-    const posts1 = ContentStateFn();
-    setPosts(posts1)
+    setSubs(Math.round(Math.random() * 500));
+    const randomPage = Math.round(Math.random() * 20);
+    randomPageUseEffect = randomPage;
+    setPage(randomPage);
+    dispatch(isAppTheme("White"));
+    dispatch(authMeTC(randomPageUseEffect));
+    dispatch(getUsersTC(randomPageUseEffect));
+    const generatedPosts = ContentStateFn();
+    setPosts(generatedPosts);
   }, []);
-  const routesPath = (
-    <Routes>
-      <Route path={"/*"} element={""} />
-      <Route
-        path={"/"}
-        element={
-          <ProfileContainer
-            data={setProfileData}
-            subs={subs}
-            randomPageUseEffect={page}
-            users={setUsersData}
-          />
-        }
-      />
-      <Route
-        path={"/profile/:userID"}
-        element={
-          <ProfileContainer
-            data={setProfileData}
-            subs={subs}
-            randomPageUseEffect={page}
-            users={setUsersData}
-          />
-        }
-      />
-      <Route path={"/messages"} element={<Messages />} />
-      <Route path={"/music"} element={<Music />} />
-      <Route path={"/video"} element={<Video />} />
-      <Route path={"/groups"} element={<Groups />} />
-      <Route path={"/games"} element={<Games />} />
-      <Route path={"/settings"} element={<Settings />} />
-      <Route path={"/shorts"} element={<Shorts />} />
-      <Route
-        path={"/subscribers"}
-        element={
-          <Subscribers
-            subscribers={setUsersData}
-            subs={subs}
-            randomPageUseEffect={page}
-          />
-        }
-      />
-    </Routes>
-  );
 
   return (
     <BrowserRouter>
       <main className={s.App}>
-        <Header />
-        <section className={s.AppWrapper}>
-          <div className={s.menuBar}>
-            <BarComponent />
+        {!status && (
+          <div className={s.loader}>
+            <div className={s.glass}>
+              <img src={loader} alt="loading..." />
+            </div>
           </div>
-          {routesPath}
-          <article className={s.componentAside} />
-        </section>
+        )}
+
+        <Header auth={auth} theme={theme} />
+        <RoutesComponent
+          subs={subs}
+          page={page}
+          posts={posts}
+          status={status}
+          auth={auth}
+          appError={appError}
+          userID={userID}
+          profileDataSelector={profileDataSelector}
+          usersData={usersData}
+        />
       </main>
     </BrowserRouter>
   );

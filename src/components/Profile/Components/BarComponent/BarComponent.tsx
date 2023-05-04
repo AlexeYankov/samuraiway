@@ -3,16 +3,12 @@ import s from "../../../../App.module.css";
 import f from "./BarComponent.module.css";
 import BarButtons from "./BarButtons";
 
-import NavListTags from "../../../../state/BarContent/BarState";
+import NavFeatures from "../../../../state/barContent/barState";
 
 const BarComponent = () => {
-  const GenericBar = NavListTags.map((el) => {
+  const GenericBar = NavFeatures.map((el) => {
     return (
-      <NavLink
-        to={el.rout}
-        className={({ isActive }) => (isActive ? f.isActiveStyle : "")}
-        key={el.id}
-      >
+      <NavLink to={el.rout} className={({ isActive }) => (isActive ? f.isActiveStyle : "")} key={el.id}>
         <div className={el.style}>
           <img src={el.icon} alt="" />
           <span>{el.tag}</span>
@@ -21,9 +17,11 @@ const BarComponent = () => {
     );
   });
   return (
-    <div>
-      <div className={s.menuBar__container}>{GenericBar}</div>
-      <BarButtons />
+    <div className={s.menuBar}>
+      <div>
+        <div className={s.menuBar__container}>{GenericBar}</div>
+        <BarButtons />
+      </div>
     </div>
   );
 };

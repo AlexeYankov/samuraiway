@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { SubscribersType } from "../../../App";
 import img from "../../../pics/Other/profile.png";
 import r from "../../../App.module.css";
 import l from "./Subscribers.module.css";
 import { useDispatch } from "react-redux";
-import {
-  setFetchReducer,
-  setFollowReducer,
-  setSubscribersReducer,
-} from "../../../state/profileState/SubscribersState";
-import {
-  getUsers,
-  setFollow,
-  setUnFollow,
-} from "../../../dataAccessLayer/ApiSN";
+import { setFetchReducer, setFollowReducer, setSubscribersReducer } from "../../../state/profileState/SubscribersState";
+import { getUsers, setFollow, setUnFollow } from "../../../dataAccessLayer/ApiSN";
+import { SubscribersType } from "../../../types/types";
 
 type SubscribersComponentType = {
   subscribers: SubscribersType[];
@@ -22,11 +14,7 @@ type SubscribersComponentType = {
   randomPageUseEffect: number;
 };
 
-const Subscribers = ({
-  subscribers,
-  subs,
-  randomPageUseEffect,
-}: SubscribersComponentType) => {
+const Subscribers = ({ subscribers, subs, randomPageUseEffect }: SubscribersComponentType) => {
   const dispatch = useDispatch();
   const subscribersPageCount = +Math.ceil(subs / 10);
   let usersData = [];
@@ -44,12 +32,7 @@ const Subscribers = ({
   console.log(getPage);
   const mappedPages = usersData.map((el) => {
     return (
-      <NavLink
-        className={l.pages}
-        key={el}
-        to={"/subscribers"}
-        onClick={() => setGetPage(randomPageUseEffect + el - 1)}
-      >
+      <NavLink className={l.pages} key={el} to={"/subscribers"} onClick={() => setGetPage(randomPageUseEffect + el - 1)}>
         {el}
       </NavLink>
     );
@@ -72,10 +55,7 @@ const Subscribers = ({
         <img src={el.photos.large ? el.photos.large : img} alt="userPhoto" />
         <div className={l.userData}>UserID:{el.id}</div>
         <div className={l.userFollowButton}>
-          <button
-            onClick={() => FollowFn(el.id, el.followed)}
-            style={el.fetching ? { pointerEvents: "none", color: "gray" } : {}}
-          >
+          <button onClick={() => FollowFn(el.id, el.followed)} style={el.fetching ? { pointerEvents: "none", color: "gray" } : {}}>
             {followedText}
           </button>
         </div>
@@ -83,10 +63,11 @@ const Subscribers = ({
       </div>
     );
   });
+  // {mappedPages}
 
   return (
     <section className={r.profileAppWrapper}>
-      <div className={l.pagination}>{mappedPages}</div>
+      <div className={l.pagination}></div>
       <div>{mappedUsers}</div>
       <div>
         <img src="" alt="" />

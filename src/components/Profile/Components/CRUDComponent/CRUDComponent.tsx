@@ -3,12 +3,11 @@ import { ReactComponent as AddSVG } from "../../../../pics/PostsIcons/square-plu
 import SearchSVG from "../../../../pics/PostsIcons/magnifying-glass-solid.svg";
 
 type CRUDType = {
-    addPost: () => void,
-    addShorts: () => void,
-}
+  addPost: () => void;
+  addShorts: () => void;
+};
 
-const CRUDComponent = ({addPost, addShorts}:CRUDType) => {
-
+const CRUDComponent = ({ addPost, addShorts }: CRUDType) => {
   return (
     <div className={s.crud__container}>
       <button className={s.crud__unit} onClick={addPost}>

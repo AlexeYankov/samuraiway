@@ -1,11 +1,7 @@
-import s from '../../../App.module.css'
+import s from "../../../App.module.css";
 
 const Shorts = () => {
-    return (
-        <section className={s.profileAppWrapper}>
-            Shorts
-        </section>
-    );
+  return <section className={s.profileAppWrapper}>Shorts</section>;
 };
 
 export default Shorts;

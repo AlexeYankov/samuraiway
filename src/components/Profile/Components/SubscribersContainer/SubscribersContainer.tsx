@@ -5,32 +5,25 @@ import img3 from "../../../../pics/Other/Star.jpg";
 import img4 from "../../../../pics/Other/Nansy.jpg";
 import img5 from "../../../../pics/Other/Susy.jpg";
 import s from "../../Profilestyles.module.css";
-import { ProfileType, SubscribersType } from "../../../../App";
 import { NavLink } from "react-router-dom";
+import { SubscribersType } from "../../../../types/types";
 
 type SubscribersContainerType = {
   subscribers: SubscribersType[];
   subscribersTotal: number;
 };
 
-const SubscribersContainer = ({
-  subscribers,
-  subscribersTotal,
-}: SubscribersContainerType) => {
-  console.log(subscribersTotal);
-  const subscribersChecker = subscribersTotal >= 6 ? 6 : subscribersTotal
-  let mappedSubscribers = subscribers.slice(0,subscribersChecker).map((el) => {
+const SubscribersContainer = ({ subscribers, subscribersTotal }: SubscribersContainerType) => {
+  console.log(subscribersTotal, subscribers);
+  const subscribersChecker = subscribersTotal >= 6 ? 6 : subscribersTotal;
+  let mappedSubscribers = subscribers.slice(0, subscribersChecker).map((el) => {
     let userPhoto = el.photos.large ? el.photos.large : img;
-    let nameChecker = el.name.split('').length > 6 ? el.name.split('').slice(0,4).join('') + "..." : el.name
+    let nameChecker = el.name.split("").length > 6 ? el.name.split("").slice(0, 4).join("") + "..." : el.name;
     return (
-        <NavLink key={el.id} className={s.profileSubscribers__listContainer} to="">
-          <img
-            className={s.profileSubscribers__AvaMin}
-            src={userPhoto}
-            alt="Photo1"
-          />
-          <span>{nameChecker}</span>
-        </NavLink>
+      <NavLink key={el.id} className={s.profileSubscribers__listContainer} to="">
+        <img className={s.profileSubscribers__AvaMin} src={userPhoto} alt="Photo1" />
+        <span>{nameChecker}</span>
+      </NavLink>
     );
   });
   return (

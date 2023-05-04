@@ -1,11 +1,11 @@
 .default {
-    width: 220px;
-    height: 50px;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    font-family: Raleway;
-    margin-top: 30px;
+  width: 220px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  font-family: Raleway;
+  margin-top: 30px;
 }

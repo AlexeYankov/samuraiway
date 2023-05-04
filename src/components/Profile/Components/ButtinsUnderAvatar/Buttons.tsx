@@ -6,22 +6,12 @@ const Buttons = () => {
   return (
     <div className={s.profileTexting__buttonContainer}>
       <UniversalButton className={s.profileTexting__button}>
-        <InviteSVG
-          className={s.profileTexting__buttonImg}
-          fill="white"
-          width="20"
-          height="22"
-        />
+        <InviteSVG className={s.profileTexting__buttonImg} fill="white" width="20" height="22" />
         <span className={s.profileTexting__button_Invite}>Follow</span>
       </UniversalButton>
 
       <UniversalButton className={s.profileTexting__button}>
-        <InviteSVG
-          className={s.profileTexting__buttonImg}
-          fill="white"
-          width="20"
-          height="22"
-        />
+        <InviteSVG className={s.profileTexting__buttonImg} fill="white" width="20" height="22" />
         <span className={s.profileTexting__button_Invite}>Message</span>
       </UniversalButton>
     </div>

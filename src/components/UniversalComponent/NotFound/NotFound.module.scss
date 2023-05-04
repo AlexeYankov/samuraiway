@@ -1,0 +1,30 @@
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 90vh;
+  z-index: 100;
+  // padding: 0px 0px ;
+  background-color: #fff;
+  .description {
+    position: relative;
+    left: -10px;
+    font-size: 44px;
+    font-weight: 400;
+    color: #747474;
+  }
+  .descriptionNav {
+    color: #747474;
+    font-weight: 500;
+  }
+  &:visited {
+    color: #747474;
+  }
+  .notFoundImg {
+    width: 700px;
+    height: 500px;
+  }
+}

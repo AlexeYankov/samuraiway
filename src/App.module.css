@@ -4,18 +4,35 @@
   flex-direction: column;
   flex-wrap: wrap;
   height: 100%;
-  background-color: #EFEFEF;
-  /* position: absolute; */
+  background-color: #efefef;
 }
 
 .AppWrapper {
   display: grid;
-  grid-template-areas:
-  "pic bud out";
+  grid-template-areas: "pic bud out";
   grid-template-columns: 3fr 6fr 3fr;
-  
   height: 100%;
   width: 100%;
+}
+.loader {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.glass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.glass img {
+  width: 50px;
 }
 
 .profileAppWrapper {
@@ -42,8 +59,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  border: 1px solid red;
   flex-wrap: wrap;
+  height: 100vh;
 }
 
 .menuBar__container {
@@ -81,14 +98,13 @@
   justify-content: flex-start;
   align-items: center;
   border-radius: 8px;
-
 }
 
 .menuBar a {
- padding-bottom: 5px;
- padding-top: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  color: black;
 }
-
 
 .menuButtons button {
   display: flex;
@@ -104,11 +120,11 @@
 
 .menuButtons__logOut {
   background: black;
-  width:100%;
+  width: 100%;
 }
 
 .menuButtons__deleteAccount {
-    background: #DC0000;
-    opacity: 0.75;
-    width: 100%;
+  background: #dc0000;
+  opacity: 0.75;
+  width: 100%;
 }

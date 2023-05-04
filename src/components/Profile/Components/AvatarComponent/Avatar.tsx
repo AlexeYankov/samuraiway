@@ -1,16 +1,11 @@
-import s from '../../Profilestyles.module.css'
+import s from "../../Profilestyles.module.css";
 
 type AvatarType = {
-    photo: string
-}
+  photo: string;
+};
 
-
-const Avatar = ({photo}: AvatarType) => {
-    return (
-        <img className={s.profileAvatar} src={photo}>
-            
-        </img>
-    );
+const Avatar = ({ photo }: AvatarType) => {
+  return <img className={s.profileAvatar} src={photo}></img>;
 };
 
 export default Avatar;

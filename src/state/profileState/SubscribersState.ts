@@ -1,36 +1,35 @@
-import { isLabeledStatement } from "typescript";
-import { SubscribersType } from "../../App";
+import { errorUtils } from "../../components/UniversalComponent/Utils/Utils";
+import { getUsers } from "../../dataAccessLayer/ApiSN";
+import { SubscribersType } from "../../types/types";
+import { isAppError, isAppStatus } from "../appState/appReducer";
+import { AppThunkType } from "../store";
 
-let initialState: SubscribersType[] = []
+let initialState: SubscribersType[] = [];
 
-const subscribersReducer = (
-  state = initialState,
-  action: SubscribersReducerType) :SubscribersType[] => {
+const subscribersReducer = (state = initialState, action: SubscribersReducerType): SubscribersType[] => {
   switch (action.type) {
     case "SET-INITIAL": {
-      return [...action.payload.data]
+      return [...action.payload.data];
     }
     case "SET-FOLLOW": {
-      return [...state].map(el=> el.id == action.payload.id ? {...el, followed: !action.payload.bool} : el)
+      return [...state].map((el) => (el.id == action.payload.id ? { ...el, followed: !action.payload.bool } : el));
     }
     case "SET-FETCH": {
-      return [...state].map(el=> el.id == action.payload.id ? {...el, fetching: action.payload.fetch} : el)
+      return [...state].map((el) => (el.id == action.payload.id ? { ...el, fetching: action.payload.fetch } : el));
     }
     default:
       return state;
   }
 };
 
-type SubscribersReducerType = InitialStateType 
-| FollowStateType
-| FetchSatusType;
+type SubscribersReducerType = InitialStateType | FollowStateType | FetchSatusType;
 
 type InitialStateType = ReturnType<typeof setSubscribersReducer>;
 export const setSubscribersReducer = (data: SubscribersType[]) => {
   return {
     type: "SET-INITIAL",
     payload: {
-      data
+      data,
     },
   } as const;
 };
@@ -40,7 +39,7 @@ export const setFollowReducer = (id: number, bool: boolean) => {
     type: "SET-FOLLOW",
     payload: {
       id,
-      bool
+      bool,
     },
   } as const;
 };
@@ -50,9 +49,29 @@ export const setFetchReducer = (id: number, fetch: boolean) => {
     type: "SET-FETCH",
     payload: {
       id,
-      fetch
+      fetch,
     },
   } as const;
 };
 
 export default subscribersReducer;
+
+export const getUsersTC =
+  (page: number): AppThunkType =>
+  async (dispatch) => {
+    dispatch(isAppStatus(false));
+    console.log(1);
+
+    try {
+      const res = await getUsers(page);
+      dispatch(setSubscribersReducer(res.data.items));
+      console.log(res.data.items);
+      console.log(2);
+
+      dispatch(isAppStatus(true));
+    } catch (e) {
+      console.log(3);
+      errorUtils(e, dispatch);
+      dispatch(isAppError("failed"));
+    }
+  };
