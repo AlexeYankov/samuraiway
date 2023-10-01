@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  position: relative;
+  padding-left: 10px;
+  color: gray;
+}
+
+.superInput {
+  border-radius: 8px;
+}
+
+.errorInput {
+  color: red;
+  border-radius: 8px;
+
+}
+
+.error {
+  color: red;
+}
+
+.placeHolder {
+  position: absolute;
+  left: 20px;
+  top: -3px;
+}
+.placeHolderOnTop {
+  position: absolute;
+  font-size: 10px;
+  background-color: #efefef;
+  padding: 0px 4px;
+  top: -18px;
+  left: 20px;
+}
+
+.container input:focus ~ span {
+  font-size: 10px;
+  background-color: #efefef;
+  padding: 0px 4px;
+  top: -18px;
+}
+
+.containerWithData{
+  position: relative;
+  padding-left: 10px;
+  font-size: 10px;
+  background-color: #efefef;
+  color: gray;
+}

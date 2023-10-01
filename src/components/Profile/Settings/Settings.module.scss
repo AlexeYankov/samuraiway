@@ -1,0 +1,60 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 35px;
+  width: 100%;
+  // border: 1px solid red;
+  .container {
+    display: flex;
+    position: relative;
+    padding: 20px 0px 0px 15px;
+    height: 100%;
+    width: 100%;
+    span {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .birthdayWrapper {
+      position: relative;
+      display: flex;
+      left: 200px;
+      .InputContainer {
+        position: relative;
+        padding: 10px;
+        top: -10px;
+        height: 38px;
+        background-color: #efefef;
+        border: 1px solid black;
+
+        &:focus {
+          // outline: none;
+          // border: 2px solid black;
+          // height: 38px;
+        }
+      }
+
+      .DayWidth {
+        width: 50px;
+      }
+      .YearWidth {
+        width: 90px;
+      }
+      .CityWidth {
+        width: 310px;
+      }
+      .bithdayInputSpan {
+        position: absolute;
+        top: 30px;
+        left: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+}

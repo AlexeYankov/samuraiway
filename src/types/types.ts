@@ -1,4 +1,4 @@
-import { CRUDType } from "../state/profileState/CRUDStateReducer";
+import { PostType } from "../state/profileState/CRUDStateReducer";
 
 export type ProfileType = {
   aboutMe: string;
@@ -21,7 +21,7 @@ export type ProfileType = {
     small: string;
   };
   subscribers: number;
-  posts?: CRUDType;
+  posts?: PostType;
   page?: number;
 };
 
@@ -45,10 +45,10 @@ export type Follow<T> = {
 };
 
 export type ValidateType = {
-  login: string;
+  email: string;
   password: string;
   rememberMe: boolean;
-  captcha: boolean;
+  // captcha: boolean;
 };
 
 export type AppStateType = {
@@ -62,4 +62,18 @@ export type MeProfileType = {
   id: number;
   email: string;
   login: string;
+};
+
+export type BodyType = {
+  subs: number;
+  page: number;
+  status: boolean;
+  auth: boolean;
+  isProfile: boolean;
+  setProfile: (value: boolean) => void;
+  appError: string;
+  theme: string;
+  userID: number;
+  usersData: SubscribersType[];
+  profileDataSelector: ProfileType;
 };

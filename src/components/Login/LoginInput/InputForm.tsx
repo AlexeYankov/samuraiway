@@ -39,6 +39,8 @@ const InputForm = ({ value, type, formik, placeHolder, error }: InputFromType) =
         {value === "password" && <SomeSVGComponent propsPath={propsPath} fill={iconStyle} click={changeType} />}
       </div>
       {formik.errors[value] && formik.touched[value] && <div className={s.inputError}>{formik.errors[value]}</div>}
+      {value === "email" && !formik.errors[value] && !formik.touched[value] && <div className={s.inputError}>to login use: free@samuraijs.com</div>}
+      {value === "password" && formik.errors[value] && !formik.touched[value] && <div className={s.inputError}>pass: free</div>}
     </div>
   );
 };

@@ -3,14 +3,15 @@ import { useFormik } from "formik";
 import InputForm from "./InputForm";
 import UniversalButton from "../../UniversalComponent/Buttons/UniversalButton";
 import { ValidateType } from "../../../types/types";
+import { useAppDispatch } from "../../../state/store";
+import { logInTC } from "../../../state/login/loginReducer";
 
-const validate = (values: any) => {
-  // console.log(1, values);
+const validate = (values: ValidateType) => {
   const errors = {} as ValidateType;
-  if (!values.login) {
-    errors.login = "Required";
-  } else if (values.login.length >= 70) {
-    errors.login = "Must be 70 characters or less";
+  if (!values.email) {
+    errors.email = "Required";
+  } else if (values.email.length >= 70) {
+    errors.email = "Must be 70 characters or less";
   }
   if (!values.password) {
     errors.password = "Required";
@@ -21,24 +22,29 @@ const validate = (values: any) => {
   return errors;
 };
 
-const LoginInput = () => {
+type LoginInputType = {
+  page: number;
+  theme: string;
+};
+
+const LoginInput = ({ page, theme }: LoginInputType) => {
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
-      login: "",
+      email: "",
       password: "",
       rememberMe: false,
     },
     validate,
-    onSubmit: (values) => {
-      console.log(values);
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values: ValidateType) => {
+      dispatch(logInTC(values, page));
     },
   });
   return (
-    <div className={s.container}>
+    <div className={theme === "White" ? s.container : s.containerBlack}>
       <form onSubmit={formik.handleSubmit}>
         <div className={s.loginContainer}>
-          <InputForm value="login" type="text" formik={formik} placeHolder="Email or phone number" error={formik.errors.login || ""} />
+          <InputForm value="email" type="text" formik={formik} placeHolder="Email or phone number" error={formik.errors.email || ""} />
           <InputForm value="password" type="password" formik={formik} placeHolder="Password" error={formik.errors.password || ""} />
           <InputForm value="rememberMe" type="checkbox" formik={formik} placeHolder="Remember me" error={formik.errors.rememberMe || ""} />
 
@@ -51,7 +57,7 @@ const LoginInput = () => {
 
             <UniversalButton className={s.loginButton}>create new account</UniversalButton>
 
-            <UniversalButton className={s.loginButton}>forget password</UniversalButton>
+            <UniversalButton className={s.loginButton}>forgot password</UniversalButton>
           </div>
         </div>
       </form>

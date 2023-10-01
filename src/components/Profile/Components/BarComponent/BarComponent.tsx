@@ -5,7 +5,11 @@ import BarButtons from "./BarButtons";
 
 import NavFeatures from "../../../../state/barContent/barState";
 
-const BarComponent = () => {
+type BarType = {
+  theme: string
+}
+
+const BarComponent = ({theme}: BarType) => {
   const GenericBar = NavFeatures.map((el) => {
     return (
       <NavLink to={el.rout} className={({ isActive }) => (isActive ? f.isActiveStyle : "")} key={el.id}>
@@ -17,7 +21,7 @@ const BarComponent = () => {
     );
   });
   return (
-    <div className={s.menuBar}>
+    <div className={theme === "White" ? s.menuBar : s.menuBarBlack}>
       <div>
         <div className={s.menuBar__container}>{GenericBar}</div>
         <BarButtons />

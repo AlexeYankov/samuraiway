@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Follow, MeProfileType, ProfileType, SubscribersType } from "../types/types";
+import { Follow, MeProfileType, ProfileType, SubscribersType, ValidateType } from "../types/types";
 
 const instance = axios.create({
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
@@ -11,6 +11,9 @@ const instance = axios.create({
 
 export const authMe = () => {
   return instance.get<Follow<MeProfileType>>("auth/me");
+};
+export const logIn = (values: ValidateType) => {
+  return instance.post<ValidateType, Follow<{userId: number}>>("auth/login", values);
 };
 export const logOut = () => {
   return instance.delete("auth/login");

@@ -60,17 +60,11 @@ export const getUsersTC =
   (page: number): AppThunkType =>
   async (dispatch) => {
     dispatch(isAppStatus(false));
-    console.log(1);
-
     try {
       const res = await getUsers(page);
       dispatch(setSubscribersReducer(res.data.items));
-      console.log(res.data.items);
-      console.log(2);
-
       dispatch(isAppStatus(true));
     } catch (e) {
-      console.log(3);
       errorUtils(e, dispatch);
       dispatch(isAppError("failed"));
     }

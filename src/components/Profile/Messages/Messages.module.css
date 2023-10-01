@@ -6,7 +6,6 @@
   height: 100%;
   min-height: 100vh;
   width: 100%;
-  border: 1px solid red;
 }
 
 .message__texting {
@@ -17,6 +16,7 @@
   flex-direction: column;
   grid-area: ser;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .message__texting__container {
@@ -31,11 +31,33 @@
   height: 80px;
   align-items: center;
   justify-content: flex-start;
-  border: none;
-
-  border: 1px solid blue;
+}
+.message__texting__container__black {
+  margin-top: 15px;
+  margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(61, 70, 80);
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  height: 80px;
+  align-items: center;
+  justify-content: flex-start;
 }
 .message__texting__container:hover {
+  display: flex;
+  z-index: 1;
+  background-color: rgba(152, 215, 233, 0.6);
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  height: 80px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.message__texting__container__black:hover {
   display: flex;
   z-index: 1;
   background-color: rgba(152, 215, 233, 0.6);
@@ -53,7 +75,6 @@
   height: 60px;
   border-radius: 50%;
   margin: 0px 0px 0px 20px;
-  border: 2px solid lime;
 }
 .message__texting__container__avatar {
   background: none;
@@ -70,7 +91,7 @@
   height: 100%;
   align-items: flex-end;
   flex-wrap: wrap;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .message__texting__window span {

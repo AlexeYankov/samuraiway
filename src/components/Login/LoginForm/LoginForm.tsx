@@ -2,14 +2,19 @@ import { LogoContainer } from "../../UniversalComponent/Header/common/LogoContai
 import LoginInput from "../LoginInput/LoginInput";
 import s from "./LoginForm.module.scss";
 
-const LoginForm = () => {
+type LoginFormType = {
+  page: number;
+  theme: string;
+};
+
+const LoginForm = ({ page, theme }: LoginFormType) => {
   return (
-    <div className={s.container}>
+    <div className={theme === "White" ? s.container : s.containerBlack}>
       <div className={s.LogoContainer}>
         <LogoContainer />
       </div>
       <span className={s.login}>Login</span>
-      <LoginInput />
+      <LoginInput page={page} theme={theme} />
     </div>
   );
 };

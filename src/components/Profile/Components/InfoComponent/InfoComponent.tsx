@@ -3,12 +3,13 @@ import s from "./InfoComponent.module.css";
 
 type InfoComponentType = {
   subscribersTotal: number;
+  theme: string;
 };
 
-const InfoComponent = ({ subscribersTotal }: InfoComponentType) => {
+const InfoComponent = ({ theme, subscribersTotal }: InfoComponentType) => {
   const getUserUrl = "Anthony" + "_" + "Soprano";
   return (
-    <div className={s.info__container}>
+    <div className={theme === "White" ? s.info__container : s.info__container__Black}>
       <div className={s.info__header}>
         <p className={s.info__UserName}>@{getUserUrl}</p>
         <div className={s.info__UserTextContainer}>

@@ -12,9 +12,11 @@ type SubscribersComponentType = {
   subscribers: SubscribersType[];
   subs: number;
   randomPageUseEffect: number;
+  isAppStatus: boolean;
+  theme: string;
 };
 
-const Subscribers = ({ subscribers, subs, randomPageUseEffect }: SubscribersComponentType) => {
+const Subscribers = ({ theme, subscribers, subs, randomPageUseEffect }: SubscribersComponentType) => {
   const dispatch = useDispatch();
   const subscribersPageCount = +Math.ceil(subs / 10);
   let usersData = [];
@@ -29,15 +31,14 @@ const Subscribers = ({ subscribers, subs, randomPageUseEffect }: SubscribersComp
       dispatch(setSubscribersReducer(dataForRender));
     });
   }, [getPage]);
-  console.log(getPage);
   const mappedPages = usersData.map((el) => {
+    const currentPageStyle = randomPageUseEffect + el - 1 === getPage ? { backgroundColor: "rgba(152, 215, 233, 0.6)" } : {};
     return (
-      <NavLink className={l.pages} key={el} to={"/subscribers"} onClick={() => setGetPage(randomPageUseEffect + el - 1)}>
+      <NavLink style={currentPageStyle} className={l.pages} key={el} to={"/subscribers"} onClick={() => setGetPage(randomPageUseEffect + el - 1)}>
         {el}
       </NavLink>
     );
   });
-  console.log(subscribers);
   const mappedUsers = subscribers.map((el) => {
     const followedText = el.followed ? "Unfollow" : "Follow";
     const FollowFn = (id: number, bool: boolean) => {
@@ -51,27 +52,32 @@ const Subscribers = ({ subscribers, subs, randomPageUseEffect }: SubscribersComp
             .then(() => dispatch(setFetchReducer(id, false)));
     };
     return (
-      <div className={l.userProfile} key={el.id}>
-        <img src={el.photos.large ? el.photos.large : img} alt="userPhoto" />
-        <div className={l.userData}>UserID:{el.id}</div>
-        <div className={l.userFollowButton}>
-          <button onClick={() => FollowFn(el.id, el.followed)} style={el.fetching ? { pointerEvents: "none", color: "gray" } : {}}>
-            {followedText}
-          </button>
+      <div className={theme === "White" ? l.userProfile : l.userProfileBlack} key={el.id}>
+        <div className={l.avaContainer}>
+          <img src={el.photos.large ? el.photos.large : img} alt="userPhoto" />
+          <span>{el.name}</span>
         </div>
-        <span>{el.name}</span>
+
+        <div className={l.buttonContainer}>
+          <span>UserID: {el.id}</span>
+          <div className={l.userFollowButton}>
+            <button
+              onClick={() => FollowFn(el.id, el.followed)}
+              style={el.fetching ? { pointerEvents: "none", color: "gray" } : {}}
+              disabled={el.fetching}
+            >
+              {followedText}
+            </button>
+          </div>
+        </div>
       </div>
     );
   });
-  // {mappedPages}
 
   return (
     <section className={r.profileAppWrapper}>
-      <div className={l.pagination}></div>
       <div>{mappedUsers}</div>
-      <div>
-        <img src="" alt="" />
-      </div>
+      <div className={l.pagination}>{mappedPages}</div>
     </section>
   );
 };

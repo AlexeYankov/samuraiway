@@ -7,14 +7,16 @@ import { Navigate } from "react-router-dom";
 
 type LoginType = {
   auth: boolean;
+  page: number
+  theme: string
 };
 
-const Login = ({ auth }: LoginType) => {
+const Login = ({ auth, page, theme }: LoginType) => {
   if (auth) {
     return <Navigate to="/profile" replace />;
   }
   return (
-    <div className={s.container}>
+    <div className={theme === "White" ? s.containerWhite : s.containerBlack}>
       <div className={s.mainWrapper}>
         <div>
           <MainComponent />
@@ -22,7 +24,7 @@ const Login = ({ auth }: LoginType) => {
         </div>
 
         <div>
-          <LoginForm />
+          <LoginForm theme={theme} page={page}/>
         </div>
       </div>
 

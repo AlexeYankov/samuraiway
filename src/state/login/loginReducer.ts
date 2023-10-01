@@ -1,7 +1,7 @@
 import { Follow, MeProfileType, ValidateType } from "../../types/types";
 import { isAppError, isAppStatus, isAuth } from "../appState/appReducer";
 import { AppThunkType } from "../store";
-import { authMe, logOut } from "../../dataAccessLayer/ApiSN";
+import { authMe, logOut, logIn } from "../../dataAccessLayer/ApiSN";
 import { errorUtils } from "../../components/UniversalComponent/Utils/Utils";
 import { setMeProfile } from "../profileState/AuthProfile";
 import { getProfileTC } from "../profileState/ProfileStateReducer";
@@ -93,6 +93,20 @@ export const logOutTC = (): AppThunkType => async (dispatch) => {
   dispatch(isAppStatus(true));
   try {
     const res = await logOut();
+    // dispatch(isAppStatus(false));
+    dispatch(isAuth(false));
+  } catch (e) {
+    errorUtils(e, dispatch);
+    dispatch(isAppError("failed"));
+  }
+};
+
+export const logInTC = (values: ValidateType, page: number): AppThunkType => async (dispatch) => {
+  dispatch(isAppStatus(true));
+  try {
+    const res = await logIn(values);
+    console.log(res)
+    dispatch(authMeTC(page))
     // dispatch(isAppStatus(false));
     dispatch(isAuth(false));
   } catch (e) {

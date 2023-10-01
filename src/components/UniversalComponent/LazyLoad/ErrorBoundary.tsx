@@ -1,38 +1,13 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import s from "./LazyLoad.module.scss";
+import { LazyJSX } from "./LazySuspense";
 
-type Props = {
-  fallback: ReactNode;
-  children: ReactNode;
+export const ErrorBoundaryFallBack = () => {
+  return (
+    <div className={s.glass}>
+      <div style={{position: 'absolute', top: '100px'}}>
+        <p style={{ padding: "80px" }}>Please reload page. App has some error.</p>
+        <LazyJSX />
+      </div>
+    </div>
+  );
 };
-
-type State = {
-  hasRenderError: boolean;
-};
-
-class ErrorBoundary extends Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-  }
-  public state: State = {
-    hasRenderError: false,
-  };
-
-  public static getDerivedStateFromError(_: Error): State {
-    // Update state so the next render will show the fallback UI.
-    return { hasRenderError: true };
-  }
-
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
-  }
-
-  public render() {
-    if (this.state.hasRenderError) {
-      return this.props.fallback;
-    }
-
-    return this.props.children;
-  }
-}
-
-export default ErrorBoundary;
