@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/samuraiway/static/css/main.6cfcb9a5.css",
-    "main.js": "/samuraiway/static/js/main.2e68d130.js",
-    "static/css/7.d43a8a37.chunk.css": "/samuraiway/static/css/7.d43a8a37.chunk.css",
-    "static/js/7.20681e80.chunk.js": "/samuraiway/static/js/7.20681e80.chunk.js",
+    "main.js": "/samuraiway/static/js/main.be18dc92.js",
+    "static/css/833.d0db7ff6.chunk.css": "/samuraiway/static/css/833.d0db7ff6.chunk.css",
+    "static/js/833.ee28809d.chunk.js": "/samuraiway/static/js/833.ee28809d.chunk.js",
     "static/css/14.2d5f3946.chunk.css": "/samuraiway/static/css/14.2d5f3946.chunk.css",
     "static/js/14.79c48c46.chunk.js": "/samuraiway/static/js/14.79c48c46.chunk.js",
     "static/css/583.bad522d2.chunk.css": "/samuraiway/static/css/583.bad522d2.chunk.css",
@@ -42,9 +42,9 @@
     "static/media/magnifying-glass-solid.svg": "/samuraiway/static/media/magnifying-glass-solid.cf315284d6e0edc1c7686864aa6da0bc.svg",
     "static/media/video-solid.svg": "/samuraiway/static/media/video-solid.939d580b3f5b78730f626d147330b1fd.svg",
     "main.6cfcb9a5.css.map": "/samuraiway/static/css/main.6cfcb9a5.css.map",
-    "main.2e68d130.js.map": "/samuraiway/static/js/main.2e68d130.js.map",
-    "7.d43a8a37.chunk.css.map": "/samuraiway/static/css/7.d43a8a37.chunk.css.map",
-    "7.20681e80.chunk.js.map": "/samuraiway/static/js/7.20681e80.chunk.js.map",
+    "main.be18dc92.js.map": "/samuraiway/static/js/main.be18dc92.js.map",
+    "833.d0db7ff6.chunk.css.map": "/samuraiway/static/css/833.d0db7ff6.chunk.css.map",
+    "833.ee28809d.chunk.js.map": "/samuraiway/static/js/833.ee28809d.chunk.js.map",
     "14.2d5f3946.chunk.css.map": "/samuraiway/static/css/14.2d5f3946.chunk.css.map",
     "14.79c48c46.chunk.js.map": "/samuraiway/static/js/14.79c48c46.chunk.js.map",
     "583.bad522d2.chunk.css.map": "/samuraiway/static/css/583.bad522d2.chunk.css.map",
@@ -65,6 +65,6 @@
   },
   "entrypoints": [
     "static/css/main.6cfcb9a5.css",
-    "static/js/main.2e68d130.js"
+    "static/js/main.be18dc92.js"
   ]
 }
