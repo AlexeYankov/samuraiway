@@ -170,10 +170,12 @@
 
 .profileSubscribers__container a {
   text-decoration: none;
+  color: black;
 }
 
 .profileSubscribers__container span {
   margin-top: 5px;
+  
 }
 
 .profileSubscribers__container a:visited {

@@ -65,6 +65,9 @@ const crudReducer = (state = initialState, action: reducerType) => {
       state.find((el) => (el.id === action.payload.postID && !el.isLiked ? { ...el, status: { ...el.status, likes: (el.status.likes += 1) } } : ""));
       return state.map((el) => (el.id === action.payload.postID ? { ...el, isLiked: !el.isLiked } : el));
     }
+    case "CHANGE-POST-TEXT": {
+      return state.map((el) => (el.id === action.payload.id ? { ...el, text: action.payload.text } : el));
+    }
     case "ADD-VIDEO": {
       return [
         ...state,
@@ -76,12 +79,30 @@ const crudReducer = (state = initialState, action: reducerType) => {
     case "DELETE-POST": {
       return state.filter((el) => el.id !== action.payload.id);
     }
+    case "SEARCH-POST": {
+      const newState = state.map((el) => {
+        if (el.text.match(new RegExp(action.payload.text, "g"))?.length) {
+          return el;
+        }
+        return "";
+      });
+      return newState
+    }
     default:
       return state;
   }
 };
 
-type reducerType = deletePostType | postLikeType | addPostType | addPostImgType | addPostMusicType | addPostVideoType | setInitialPostsType;
+type reducerType =
+  | changePostTextType
+  | deletePostType
+  | postLikeType
+  | addPostType
+  | addPostImgType
+  | addPostMusicType
+  | addPostVideoType
+  | setInitialPostsType
+  | searchPostTextType;
 
 type addPostType = ReturnType<typeof addPostReducer>;
 export const addPostReducer = (id: string, time: string, text: string, img: string, music: string, video: string) => {
@@ -153,6 +174,28 @@ export const deletePostReducer = (id: string) => {
     type: "DELETE-POST",
     payload: {
       id,
+    },
+  } as const;
+};
+
+type changePostTextType = ReturnType<typeof changePostTextReducer>;
+export const changePostTextReducer = (id: string, text: string) => {
+  return {
+    type: "CHANGE-POST-TEXT",
+    payload: {
+      id,
+      text,
+    },
+  } as const;
+};
+
+type searchPostTextType = ReturnType<typeof searchPostTextReducer>;
+export const searchPostTextReducer = (text: string, posts: PostType[]) => {
+  return {
+    type: "SEARCH-POST",
+    payload: {
+      text,
+      posts,
     },
   } as const;
 };

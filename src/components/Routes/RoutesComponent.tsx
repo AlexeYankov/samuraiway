@@ -28,8 +28,8 @@ export const RoutesComponent = ({
   status,
   auth,
   appError,
-  setProfile,
-  userID,
+  setPage,
+  setSubs,
   usersData,
   profileDataSelector,
 }: BodyType) => {
@@ -43,11 +43,13 @@ export const RoutesComponent = ({
             path={"profile"}
             element={
               <LazyProfileContainer
+                setPage={setPage}
                 isProfile={isProfile}
                 theme={theme}
                 data={profileDataSelector}
                 subs={subs}
                 randomPageUseEffect={page}
+                page={page}
                 users={usersData}
                 auth={auth}
               />
@@ -72,7 +74,7 @@ export const RoutesComponent = ({
   );
   return (
     <section className={theme === "White" ? s.AppWrapper : s.AppWrapperBlack}>
-      {auth && <BarComponent theme={theme} />}
+      {auth && <BarComponent setSubs={setSubs} theme={theme} page={page} />}
       {routesPath}
       {auth && <aside className={s.componentAside} />}
     </section>

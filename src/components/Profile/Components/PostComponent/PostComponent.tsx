@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { PostType, deletePostReducer, postLikeReducer } from "../../../../state/profileState/CRUDStateReducer";
+import { PostType, deletePostReducer, postLikeReducer, changePostTextReducer } from "../../../../state/profileState/CRUDStateReducer";
 import { AppRootStateType, useAppDispatch } from "../../../../state/store";
 import s from "./PostComponent.module.css";
 import PostComponentFooter from "./PostComponentFooter";
@@ -41,7 +41,6 @@ const PostComponent = ({ theme, data, post, postSearch }: PostedType) => {
   const dispatch = useAppDispatch();
   const [editPost, setEdit] = useState(false);
   const [editPostText, setEditPostText] = useState(false);
-  const [editPostEnd, setEditPostEnd] = useState(false);
   const [postText, setPostText] = useState(post.text);
   const postsCount = useSelector<AppRootStateType, PostType>((state) => state.posts);
   const logFn = (arg: string) => {
@@ -62,13 +61,21 @@ const PostComponent = ({ theme, data, post, postSearch }: PostedType) => {
     setPostText(e.currentTarget.value);
   };
   const keyDownHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && e.currentTarget.name !== "post") {
+      dispatch(changePostTextReducer(post.id, postText));
       return setEditPostText(!editPostText);
     }
-    if (e.key === "Escape") {
-      setPostText(postText)
+    if (e.key === "Escape" && e.currentTarget.name !== "post") {
+      setPostText(post.text);
       return setEditPostText(!editPostText);
     }
+    if (e.key === "Escape" && e.currentTarget.name === "post") {
+      setEdit(!editPost);
+    }
+  };
+  const onBlurHandler = (e: React.FocusEvent<HTMLTextAreaElement, Element>) => {
+    console.log(e.target);
+    setEdit(!editPost);
   };
   const editPostJSX = editPostText ? (
     <textarea
@@ -76,6 +83,7 @@ const PostComponent = ({ theme, data, post, postSearch }: PostedType) => {
       className={theme === "White" ? s.posts__post__textarea : s.posts__post__textarea__black}
       onChange={onChangePostText}
       value={postText}
+      // onBlur={onBlurHandler}
     />
   ) : (
     <span>{post.text}</span>
@@ -85,7 +93,7 @@ const PostComponent = ({ theme, data, post, postSearch }: PostedType) => {
       {postSearch && postsSearchJSX}
       <div className={s.posts__userPost}>
         <div className={s.posts__userPhoto}>
-          <img src={DefaultIcon} alt="" />
+          <img src={data.photos?.large || DefaultIcon} alt="user__photo" />
         </div>
         <div className={s.posts__user}>
           <div className={s.posts__user__container}>
@@ -94,15 +102,22 @@ const PostComponent = ({ theme, data, post, postSearch }: PostedType) => {
             <br />
             <span className={s.posts__post__date}>{post.time}</span>
           </div>
-          <div className={s.posts__user__container} style={{ display: "flex" }} onClick={() => setEdit(!editPost)}>
+          <div id="postMoreId" className={s.posts__user__container} style={{ display: "flex" }} onClick={() => setEdit(!editPost)}>
             <svg className={s.posts__user__moreButton} width={35} fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z" />
             </svg>
             {editPost && (
               <ul className={theme === "White" ? s.moreButton__Menu : s.moreButton__Menu__Black}>
-                <li onClick={() => logFn("delete")}>Удалить</li>
-                <li onClick={() => logFn("edit")}>Редактировать</li>
-                <li onClick={() => logFn("share")}>Переслать</li>
+                <li onMouseDown={() => logFn("delete")}>Удалить</li>
+                <li onMouseDown={() => logFn("edit")}>Редактировать</li>
+                <li onMouseDown={() => logFn("share")}>Переслать</li>
+                <textarea
+                  autoFocus
+                  onKeyDown={keyDownHandler}
+                  name="post"
+                  onBlur={onBlurHandler}
+                  style={{ opacity: "0", position: "absolute", zIndex: "0", width: "0px", height: "0px" }}
+                />
               </ul>
             )}
           </div>

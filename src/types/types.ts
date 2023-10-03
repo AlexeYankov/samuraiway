@@ -70,7 +70,8 @@ export type BodyType = {
   status: boolean;
   auth: boolean;
   isProfile: boolean;
-  setProfile: (value: boolean) => void;
+  setSubs: (value: number) => void;
+  setPage: (value: number) => void;
   appError: string;
   theme: string;
   userID: number;

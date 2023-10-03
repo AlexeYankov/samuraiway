@@ -11,14 +11,16 @@ import { Navigate } from "react-router-dom";
 type ProfileContainerType = {
   data: ProfileType;
   subs: number;
+  page: number;
   users: SubscribersType[];
   randomPageUseEffect?: number;
   auth: boolean;
   theme: string;
   isProfile: boolean;
+  setPage: (value: number) => void;
 };
 
-const ProfileContainer = ({ isProfile, theme, data, subs, randomPageUseEffect, users, auth }: ProfileContainerType) => {
+const ProfileContainer = ({setPage,  page, isProfile, theme, data, subs, randomPageUseEffect, users, auth }: ProfileContainerType) => {
   const [post, setPost] = useState<boolean>(false);
   const [shorts, setShorts] = useState<boolean>(false);
   const [postValue, somePostValue] = useState<string>("");
@@ -43,8 +45,8 @@ const ProfileContainer = ({ isProfile, theme, data, subs, randomPageUseEffect, u
     <article className={r.profileAppWrapper}>
       <section className={theme === "White" ? s.profileWrapper : s.profileWrapperBlack}>
         <AvatarHOC data={data} />
-        <ColumnComponent isProfile={isProfile} theme={theme} subs={subs} users={users} />
-        <InfoComponentHOC theme={theme} subs={subs} />
+        <ColumnComponent setPage={setPage} isProfile={isProfile} theme={theme} page={page} subs={subs} users={users} />
+        <InfoComponentHOC theme={theme} subs={subs} data={data} />
         <PostsComponentHOC
           post={post}
           shorts={shorts}

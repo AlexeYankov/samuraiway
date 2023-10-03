@@ -1,19 +1,22 @@
 import { NavLink } from "react-router-dom";
 import s from "./InfoComponent.module.css";
+import { ProfileType } from "../../../../types/types";
 
 type InfoComponentType = {
-  subscribersTotal: number;
+  subs: number;
   theme: string;
+  data: ProfileType;
 };
 
-const InfoComponent = ({ theme, subscribersTotal }: InfoComponentType) => {
-  const getUserUrl = "Anthony" + "_" + "Soprano";
+const InfoComponent = ({ theme, data, subs }: InfoComponentType) => {
   return (
     <div className={theme === "White" ? s.info__container : s.info__container__Black}>
       <div className={s.info__header}>
-        <p className={s.info__UserName}>@{getUserUrl}</p>
+        <p className={s.info__UserName}>@{data.fullName}</p>
         <div className={s.info__UserTextContainer}>
-          <span className={s.info__UserTextStatus}>Can solve any your problem</span>
+          <span className={s.info__UserTextStatus}>
+            {data.lookingForAJobDescription ? data.lookingForAJobDescription : "Can solve any your problem"}
+          </span>
           <span className={s.info__UserOnlineStatus}>
             last seen 19 jun 2013 at 21:51
             <svg style={{ marginLeft: "10px" }} fill="gray" width={20} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -51,7 +54,7 @@ const InfoComponent = ({ theme, subscribersTotal }: InfoComponentType) => {
       <div className={s.info__footer}>
         <div className={s.info__footer__container}>
           <NavLink className={s.info__footer__unit} to="/subscribers">
-            <span className={s.info__footer__unit__number}>{subscribersTotal}</span>
+            <span className={s.info__footer__unit__number}>{subs}</span>
             <span className={s.info__footer__unit__text}>subscribers</span>
           </NavLink>
           <a className={s.info__footer__unit} href="">

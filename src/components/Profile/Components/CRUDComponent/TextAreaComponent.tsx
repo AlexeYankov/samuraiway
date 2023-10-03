@@ -1,9 +1,9 @@
 import s from "../../Profilestyles.module.css";
 import SomeSVGComponent from "../../../UniversalComponent/SVGComponent/SomeSVGComponent";
 import React, { ChangeEvent, useState } from "react";
-import { useDispatch } from "react-redux";
 import { addPostReducer } from "../../../../state/profileState/CRUDStateReducer";
 import icons from "./constants";
+import { useAppDispatch } from "../../../../state/store";
 
 type TextAreaType = {
   accept: string;
@@ -17,10 +17,10 @@ type TextAreaType = {
 
 const TextAreaComponent: React.FC<TextAreaType> = ({ clearTextArea, theme, accept, closeFn, value, onChange, shorts }) => {
   const [files, uploadFiles] = useState(Object);
+  const dispatch = useAppDispatch();
   const textValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.currentTarget.value);
   };
-  const dispatch = useDispatch();
   const handlerChanged = (e: ChangeEvent<HTMLInputElement>) => {
     uploadFiles(e.target.files);
   };
@@ -66,21 +66,28 @@ const TextAreaComponent: React.FC<TextAreaType> = ({ clearTextArea, theme, accep
   );
   const addPost = () => {
     const now = new Date();
-    const getMonth = now.getMonth() + 1
+    const getMonth = now.getMonth() + 1;
     const time = now.getDate() + "." + getMonth + "." + now.getFullYear();
     const img = "";
     const music = "";
     const video = "";
     const id = now + "";
-    console.log("posted")
-    dispatch(addPostReducer(id, time, value, img, music, video))
-    clearTextArea("")
-
-  }
-  
+    console.log("posted");
+    dispatch(addPostReducer(id, time, value, img, music, video));
+    clearTextArea("");
+  };
+  const keyDownHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter") {
+      closeFn();
+      return addPost();
+    }
+    if (e.key === "Escape") {
+      return closeFn();
+    }
+  };
   return (
     <div className={theme === "White" ? s.profileInfo__CRUDarea : s.profileInfo__CRUDarea__black}>
-      <textarea className="" onChange={textValue} value={value} />
+      <textarea autoFocus onKeyDown={keyDownHandler} className="" onChange={textValue} value={value} />
       <div className={s.profileInfo__CRUDarea__buttons}>
         <button className={s.profileInfo__CRUDarea__send} onClick={addPost}>
           <SomeSVGComponent propsPath={icons.send} />
